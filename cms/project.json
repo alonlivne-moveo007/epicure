@@ -1,0 +1,26 @@
+{
+  "name": "cms",
+  "targets": {
+    "develop": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm run develop",
+        "cwd": "cms"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm run build",
+        "cwd": "cms"
+      }
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm run start",
+        "cwd": "cms"
+      }
+    }
+  }
+}

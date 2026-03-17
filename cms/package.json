@@ -3,6 +3,34 @@
   "version": "0.1.0",
   "private": true,
   "description": "A Strapi application",
+  "nx": {
+    "targets": {
+      "develop": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "npm run develop",
+          "cwd": "cms"
+        },
+        "configurations": {}
+      },
+      "build": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "npm run build",
+          "cwd": "cms"
+        },
+        "configurations": {}
+      },
+      "start": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "npm run start",
+          "cwd": "cms"
+        },
+        "configurations": {}
+      }
+    }
+  },
   "scripts": {
     "build": "strapi build",
     "console": "strapi console",
