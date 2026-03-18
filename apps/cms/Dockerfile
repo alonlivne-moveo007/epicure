@@ -15,8 +15,12 @@ RUN cd apps/cms && npm install
 
 COPY . .
 
+# Build admin once (production build). Avoids dev mode + Vite (localhost:5173) in Docker.
+RUN npx nx build cms
+
 EXPOSE 1337
 
-# Strapi dev server; HOST=0.0.0.0 so it listens inside Docker
+# Production serve: admin is pre-built, no Vite/5173. HOST=0.0.0.0 for Docker.
 ENV HOST=0.0.0.0
-CMD ["npx", "nx", "develop", "cms"]
+ENV NODE_ENV=production
+CMD ["npx", "nx", "start", "cms"]
