@@ -1,5 +1,5 @@
 {
-  "name": "cms",
+  "name": "strapi",
   "targets": {
     "develop": {
       "executor": "nx:run-commands",
