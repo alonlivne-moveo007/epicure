@@ -1,0 +1,62 @@
+# Run the full stack: frontend → backend → cms
+# Usage: docker compose up --build
+# App: http://localhost:3000  |  Strapi admin: http://localhost:1337/admin
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - HOSTNAME=0.0.0.0
+      - PORT=3000
+      # Frontend calls backend by service name (server-side)
+      - NEXT_PUBLIC_API_URL=http://localhost:3002
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/cms/node_modules
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "3002:3002"
+    environment:
+      - NODE_ENV=development
+      - PORT=3002
+      # Backend calls cms by service name
+      - CMS_URL=http://cms:1337
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/cms/node_modules
+    depends_on:
+      - cms
+
+  cms:
+    build:
+      context: .
+      dockerfile: cms/Dockerfile
+    ports:
+      - "1337:1337"
+    env_file:
+      - .env
+    environment:
+      - HOST=0.0.0.0
+      - PORT=1337
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/cms/node_modules
+      # Persist Strapi sqlite data
+      - strapi_data:/app/cms/.tmp
+
+volumes:
+  strapi_data:

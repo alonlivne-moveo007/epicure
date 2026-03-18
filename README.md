@@ -39,6 +39,22 @@ Run the three apps in **separate terminals** from the repo root:
 
 You can also use the root scripts: `npm run frontend` and `npm run backend` (backend builds then runs with Node on port 3002).
 
+### Run with Docker
+
+Run the whole stack (frontend → backend → cms) with one command:
+
+```sh
+# First time: copy env and set Strapi secrets (see .env.example)
+cp .env.example .env
+
+docker compose up --build
+```
+
+- **App:** [http://localhost:3000](http://localhost:3000)
+- **Strapi admin:** [http://localhost:1337/admin](http://localhost:1337/admin)
+
+Ensure `cms/.env` exists for Strapi (or use the root `.env`; the cms service loads it via docker-compose).
+
 ## Finish your CI setup
 
 [Click here to finish setting up your workspace!](https://cloud.nx.app/connect/ZEO24kvnrq)

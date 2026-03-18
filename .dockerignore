@@ -1,0 +1,34 @@
+# Dependencies
+node_modules
+**/node_modules
+
+# Build outputs
+.next
+**/.next
+dist
+**/dist
+backend/dist
+frontend/.next
+cms/dist
+cms/.tmp
+
+# Git and IDE
+.git
+.gitignore
+.cursor
+*.md
+!README.md
+
+# Env (use .env.example as template; real .env not in image)
+.env
+.env.*
+!.env.example
+
+# Logs and cache
+npm-debug.log*
+.nx
+.cache
+
+# OS
+.DS_Store
+Thumbs.db
