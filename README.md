@@ -6,6 +6,37 @@
 
 [Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/js?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
 
+## How to run the app
+
+After cloning, install dependencies from the repo root:
+
+```sh
+npm install
+```
+
+The CMS (Strapi) is not in the workspace, so install its dependencies once:
+
+```sh
+cd cms && npm install && cd ..
+```
+
+Strapi needs a `.env` file with secrets. If `cms/.env` doesn't exist, copy the example and set the values (at minimum `ADMIN_JWT_SECRET` and the other keys in `cms/.env.example`):
+
+```sh
+cp cms/.env.example cms/.env
+# Edit cms/.env and replace placeholder secrets with random values (e.g. from `openssl rand -base64 32`)
+```
+
+Run the three apps in **separate terminals** from the repo root:
+
+| Terminal | Command | URL |
+|----------|---------|-----|
+| 1 – Frontend | `nx serve frontend` | http://localhost:3000 |
+| 2 – Backend | `nx serve backend` | http://localhost:3002/api |
+| 3 – Strapi CMS | `nx develop cms` | http://localhost:1337/admin |
+
+You can also use the root scripts: `npm run frontend` and `npm run backend` (backend builds then runs with Node on port 3002).
+
 ## Finish your CI setup
 
 [Click here to finish setting up your workspace!](https://cloud.nx.app/connect/ZEO24kvnrq)

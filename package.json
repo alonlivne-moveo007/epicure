@@ -2,7 +2,11 @@
   "name": "@epicure/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "frontend": "nx serve frontend",
+    "backend": "nx run @epicure/backend:build --configuration=development && node backend/dist/main.js",
+    "backend:build": "nx run @epicure/backend:build --configuration=development"
+  },
   "private": true,
   "devDependencies": {
     "@eslint/js": "^9.8.0",
