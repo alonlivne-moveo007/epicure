@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "frontend": "nx serve frontend",
-    "backend": "nx run @epicure/backend:build --configuration=development && node backend/dist/main.js",
+    "frontend": "nx serve @epicure/frontend",
+    "backend": "nx run @epicure/backend:build --configuration=development && node apps/backend/dist/main.js",
     "backend:build": "nx run @epicure/backend:build --configuration=development"
   },
   "private": true,
@@ -58,10 +58,11 @@
     "webpack-cli": "^5.1.4"
   },
   "workspaces": [
-    "packages/*",
-    "frontend",
-    "backend",
-    "backend-e2e"
+    "apps/backend",
+    "apps/frontend",
+    "apps/backend-e2e",
+    "libs/*",
+    "libs/backend/*"
   ],
   "dependencies": {
     "@nestjs/common": "^11.0.0",

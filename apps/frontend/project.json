@@ -1,0 +1,27 @@
+{
+  "name": "@epicure/frontend",
+  "tags": ["type:app", "scope:frontend"],
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "next build",
+        "cwd": "apps/frontend"
+      },
+      "configurations": {
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "next dev",
+        "cwd": "apps/frontend"
+      },
+      "configurations": {
+        "development": {}
+      },
+      "continuous": true
+    }
+  }
+}

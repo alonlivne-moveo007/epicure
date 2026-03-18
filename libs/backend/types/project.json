@@ -1,0 +1,4 @@
+{
+  "name": "@epicure/backend-types",
+  "tags": ["type:lib", "scope:backend"]
+}

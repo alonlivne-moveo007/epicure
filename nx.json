@@ -1,11 +1,14 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-
   "workspaceLayout": {
     "appsDir": "apps",
     "libsDir": "libs"
   },
-
+  "targetDefaults": {
+    "typecheck": {
+      "dependsOn": ["^build"]
+    }
+  },
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": ["default"],

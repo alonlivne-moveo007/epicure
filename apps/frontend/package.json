@@ -2,32 +2,8 @@
   "name": "@epicure/frontend",
   "version": "0.0.1",
   "private": true,
-  "nx": {
-    "targets": {
-      "build": {
-        "executor": "nx:run-commands",
-        "options": {
-          "command": "next build",
-          "cwd": "frontend"
-        },
-        "configurations": {
-          "production": {}
-        }
-      },
-      "serve": {
-        "executor": "nx:run-commands",
-        "options": {
-          "command": "next dev",
-          "cwd": "frontend"
-        },
-        "configurations": {
-          "development": {}
-        },
-        "continuous": true
-      }
-    }
-  },
   "dependencies": {
+    "@epicure/backend-types": "*",
     "next": "~16.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

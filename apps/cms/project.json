@@ -1,25 +1,26 @@
 {
-  "name": "strapi",
+  "name": "cms",
+  "tags": ["type:app", "scope:cms"],
   "targets": {
     "develop": {
       "executor": "nx:run-commands",
       "options": {
         "command": "npm run develop",
-        "cwd": "cms"
+        "cwd": "apps/cms"
       }
     },
     "build": {
       "executor": "nx:run-commands",
       "options": {
         "command": "npm run build",
-        "cwd": "cms"
+        "cwd": "apps/cms"
       }
     },
     "start": {
       "executor": "nx:run-commands",
       "options": {
         "command": "npm run start",
-        "cwd": "cms"
+        "cwd": "apps/cms"
       }
     }
   }

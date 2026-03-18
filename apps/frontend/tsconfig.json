@@ -1,5 +1,5 @@
 {
-  "extends": "../tsconfig.base.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "jsx": "preserve",
     "noEmit": true,
@@ -31,8 +31,8 @@
     "src/**/*.tsx",
     "src/**/*.js",
     "src/**/*.jsx",
-    "../frontend/.next/types/**/*.ts",
-    "../dist/frontend/.next/types/**/*.ts",
+    ".next/types/**/*.ts",
+    "../../dist/apps/frontend/.next/types/**/*.ts",
     "next-env.d.ts"
   ],
   "exclude": [
@@ -47,5 +47,10 @@
     "eslint.config.js",
     "eslint.config.cjs",
     "eslint.config.mjs"
+  ],
+  "references": [
+    {
+      "path": "../../libs/backend/types"
+    }
   ]
 }

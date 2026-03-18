@@ -14,28 +14,24 @@ After cloning, install dependencies from the repo root:
 npm install
 ```
 
-The CMS (Strapi) is not in the workspace, so install its dependencies once:
+The CMS (Strapi) lives in `apps/cms` and is not in npm workspaces; install its dependencies once:
 
 ```sh
-cd cms && npm install && cd ..
+cd apps/cms && npm install && cd ../..
 ```
 
-Strapi needs a `.env` file with secrets. If `cms/.env` doesn't exist, copy the example and set the values (at minimum `ADMIN_JWT_SECRET` and the other keys in `cms/.env.example`):
+**Environment and secrets**
 
-```sh
-cp cms/.env.example cms/.env
-# Edit cms/.env and replace placeholder secrets with random values (e.g. from `openssl rand -base64 32`)
-```
+- **Root `.env`** – Used by Docker Compose (Strapi and other services). Copy `.env.example` to `.env` and set real values.
+- **Strapi** – Can use root `.env` when run via Docker, or `apps/cms/.env` for local runs. If `apps/cms/.env` doesn't exist, copy `apps/cms/.env.example` and set at least `ADMIN_JWT_SECRET` and the other keys (e.g. `openssl rand -base64 32` for secrets).
 
 Run the three apps in **separate terminals** from the repo root:
 
-
-| Terminal       | Command             | URL                                                        |
-| -------------- | ------------------- | ---------------------------------------------------------- |
-| 1 – Frontend   | `nx serve frontend` | [http://localhost:3000](http://localhost:3000)             |
-| 2 – Backend    | `nx serve backend`  | [http://localhost:3002/api](http://localhost:3002/api)     |
-| 3 – Strapi CMS | `nx develop strapi` | http://localhost:1337/admin |
-
+| Terminal       | Command                          | URL                                                        |
+| -------------- | -------------------------------- | ---------------------------------------------------------- |
+| 1 – Frontend   | `nx serve @epicure/frontend`     | [http://localhost:3000](http://localhost:3000)             |
+| 2 – Backend    | `nx serve @epicure/backend`      | [http://localhost:3002/api](http://localhost:3002/api)     |
+| 3 – Strapi CMS | `nx develop cms`                | http://localhost:1337/admin                               |
 
 You can also use the root scripts: `npm run frontend` and `npm run backend` (backend builds then runs with Node on port 3002).
 
@@ -53,24 +49,29 @@ docker compose up --build
 - **App:** [http://localhost:3000](http://localhost:3000)
 - **Strapi admin:** [http://localhost:1337/admin](http://localhost:1337/admin)
 
-Ensure `cms/.env` exists for Strapi (or use the root `.env`; the cms service loads it via docker-compose).
+Ensure root `.env` exists (or `apps/cms/.env`); the cms service loads it via docker-compose.
 
 ## Finish your CI setup
 
 [Click here to finish setting up your workspace!](https://cloud.nx.app/connect/ZEO24kvnrq)
 
+## Project layout
+
+- **Apps** – `apps/backend` (NestJS), `apps/frontend` (Next.js), `apps/cms` (Strapi), `apps/backend-e2e`
+- **Libs** – `libs/` for shared code (e.g. `libs/backend/types` → `@epicure/backend-types`)
+
 ## Generate a library
 
 ```sh
-npx nx g @nx/js:lib packages/pkg1 --publishable --importPath=@my-org/pkg1
+npx nx g @nx/js:lib my-lib --directory=libs/shared/my-lib --importPath=@epicure/shared-my-lib --no-interactive
 ```
 
 ## Run tasks
 
-To build the library use:
+To build a library (e.g. shared types):
 
 ```sh
-npx nx build pkg1
+npx nx build @epicure/backend-types
 ```
 
 To run any task with Nx use:
@@ -78,6 +79,8 @@ To run any task with Nx use:
 ```sh
 npx nx <target> <project-name>
 ```
+
+Project names: `@epicure/backend`, `@epicure/frontend`, `@epicure/backend-e2e`, `@epicure/backend-types`, `cms`.
 
 These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
 
