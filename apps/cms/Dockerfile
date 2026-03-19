@@ -15,12 +15,16 @@ RUN cd apps/cms && npm install
 
 COPY . .
 
-# Build admin once (production build). Avoids dev mode + Vite (localhost:5173) in Docker.
-RUN npx nx build cms
+# Clean any leftover build/cache so admin builds from scratch (avoids "is not a function" / stale bundles).
+RUN rm -rf apps/cms/build apps/cms/dist apps/cms/.cache apps/cms/.strapi/cache
+
+# Build admin once in production mode. Avoids dev mode + Vite (localhost:5173) in Docker.
+# --skip-nx-cache so the admin bundle is always built from source (avoids stale admin JS).
+ENV NODE_ENV=production
+RUN npx nx build cms --skip-nx-cache
 
 EXPOSE 1337
 
 # Production serve: admin is pre-built, no Vite/5173. HOST=0.0.0.0 for Docker.
 ENV HOST=0.0.0.0
-ENV NODE_ENV=production
 CMD ["npx", "nx", "start", "cms"]

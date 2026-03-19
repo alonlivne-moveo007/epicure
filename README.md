@@ -51,6 +51,28 @@ docker compose up --build
 
 Ensure root `.env` exists (or `apps/cms/.env`); the cms service loads it via docker-compose.
 
+### Strapi Admin: clean rebuild and version alignment
+
+If the Admin UI shows a spinner, **"is not a function"** in the console, or plugin deprecation warnings:
+
+1. **Rebuild the image from a clean state** (no cache):
+   ```sh
+   docker compose build --no-cache cms
+   docker compose up cms
+   ```
+2. **Align Strapi and plugins** (from repo root):
+   ```sh
+   cd apps/cms && npx @strapi/upgrade latest && cd ../..
+   ```
+   Then rebuild the cms image and run again.
+
+3. **Local clean build** (when developing cms outside Docker):
+   ```sh
+   cd apps/cms
+   rm -rf build dist .cache .strapi/cache
+   npm run build && npm run start
+   ```
+
 ## Finish your CI setup
 
 [Click here to finish setting up your workspace!](https://cloud.nx.app/connect/ZEO24kvnrq)

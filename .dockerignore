@@ -7,8 +7,12 @@ node_modules
 **/.next
 dist
 **/dist
+**/build
 backend/dist
 frontend/.next
+apps/cms/dist
+apps/cms/build
+apps/cms/.tmp
 cms/dist
 cms/.tmp
 
@@ -27,7 +31,11 @@ cms/.tmp
 # Logs and cache
 npm-debug.log*
 .nx
+**/.nx
 .cache
+**/.cache
+apps/cms/.cache
+apps/cms/.strapi
 
 # OS
 .DS_Store
