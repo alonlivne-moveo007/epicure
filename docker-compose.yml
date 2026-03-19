@@ -49,12 +49,13 @@ services:
     env_file:
       - .env
     environment:
+      - NODE_ENV=development
       - HOST=0.0.0.0
       - PORT=1337
       # Admin panel (browser) talks to API at localhost, not cms:1337
       - STRAPI_ADMIN_BACKEND_URL=http://localhost:1337
     volumes:
-      # No app mount: use image's pre-built admin (avoids dev/Vite/5173). Rebuild image after cms code changes.
+      # Persist .tmp; dev mode allows Content-Type Builder editing
       - strapi_data:/app/apps/cms/.tmp
 
 volumes:

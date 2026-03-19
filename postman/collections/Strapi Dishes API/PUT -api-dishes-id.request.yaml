@@ -1,0 +1,18 @@
+$kind: http-request
+name: PUT /api/dishes/:id
+description: Update an existing dish by ID. Set dishId in collection variables
+  or in the path. Authenticated requests may require a Bearer token.
+url: "{{baseUrl}}/api/dishes/{{dishId}}"
+method: PUT
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "data": {
+        "name": "Updated Dish Name",
+        "description": "Updated description"
+      }
+    }
+order: 4000

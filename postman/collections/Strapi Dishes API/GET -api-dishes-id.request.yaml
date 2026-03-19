@@ -1,0 +1,6 @@
+$kind: http-request
+name: GET /api/dishes/:id
+description: Get a single dish by ID.
+url: "{{baseUrl}}/api/dishes/{{dishId}}"
+method: GET
+order: 2000

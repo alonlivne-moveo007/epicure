@@ -1,0 +1,19 @@
+$kind: http-request
+name: POST /api/dishes
+description: Create a new dish. Adjust body fields to match your Strapi dish
+  content-type. Authenticated requests may require a Bearer token in the
+  Authorization header.
+url: "{{baseUrl}}/api/dishes"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "data": {
+        "name": "Example Dish",
+        "description": "Optional description"
+      }
+    }
+order: 3000

@@ -1,0 +1,5 @@
+$kind: collection
+description: CRUD operations for the Strapi dishes content type.
+variables:
+  baseUrl: http://localhost:1337
+  dishId: "1"
