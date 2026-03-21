@@ -1,6 +1,12 @@
 # Run the full stack: frontend → backend → cms
 # Usage: docker compose up --build
 # App: http://localhost:3000  |  Strapi admin: http://localhost:1337/admin
+#
+# Strapi persistence: bind-mount apps/cms so Content-Type Builder schemas under
+# src/api survive container recreation. SQLite + uploads stay on named volume
+# strapi-data at apps/cms/.tmp (survives `docker compose down` without -v).
+# Anonymous node_modules volume keeps Linux native deps from the image (e.g.
+# better-sqlite3) — do not rely on host Mac node_modules inside the container.
 
 services:
   frontend:
@@ -28,6 +34,8 @@ services:
       dockerfile: apps/backend/Dockerfile
     ports:
       - "3002:3002"
+    env_file:
+      - apps/backend/.env
     environment:
       - NODE_ENV=development
       - PORT=3002
@@ -55,8 +63,11 @@ services:
       # Admin panel (browser) talks to API at localhost, not cms:1337
       - STRAPI_ADMIN_BACKEND_URL=http://localhost:1337
     volumes:
-      # Persist .tmp; dev mode allows Content-Type Builder editing
-      - strapi_data:/app/apps/cms/.tmp
+      - ./apps/cms:/app/apps/cms
+      # Named volume: SQLite + uploads; overlays host bind so DB is not only on the host copy.
+      - strapi-data:/app/apps/cms/.tmp
+      # Preserve image-built deps (Linux); host bind would otherwise expose darwin binaries.
+      - /app/apps/cms/node_modules
 
 volumes:
-  strapi_data:
+  strapi-data:

@@ -20,8 +20,9 @@ cd apps/cms && npm install && cd ../..
 
 **Environment and secrets**
 
-- **Root `.env`** – Used by Docker Compose (Strapi and other services). Copy `.env.example` to `.env` and set real values.
+- **Root `.env`** – Used by Docker Compose (Strapi and other services). Copy `.env.example` to `.env` and set real values. For the Nest backend calling Strapi over REST, set `STRAPI_API_TOKEN` (create a token in Strapi under **Settings → API Tokens**; read-only is enough for listing content).
 - **Strapi** – Can use root `.env` when run via Docker, or `apps/cms/.env` for local runs. If `apps/cms/.env` doesn't exist, copy `apps/cms/.env.example` and set at least `ADMIN_JWT_SECRET` and the other keys (e.g. `openssl rand -base64 32` for secrets).
+- **Nest backend → Strapi** – For local `nx serve @epicure/backend`, copy `apps/backend/.env.example` to `apps/backend/.env` (or use the repo root `.env`) and set `CMS_URL` (default `http://localhost:1337`) and `STRAPI_API_TOKEN`. Example proxy endpoints: `GET http://localhost:3002/api/dishes`, `/api/restaurants`, `/api/chefs` (each forwards to the matching Strapi `GET /api/...` collection).
 
 Run the three apps in **separate terminals** from the repo root:
 
@@ -29,7 +30,7 @@ Run the three apps in **separate terminals** from the repo root:
 | Terminal       | Command                      | URL                                                        |
 | -------------- | ---------------------------- | ---------------------------------------------------------- |
 | 1 – Frontend   | `nx serve @epicure/frontend` | [http://localhost:3000](http://localhost:3000)             |
-| 2 – Backend    | `nx serve @epicure/backend`  | [http://localhost:3002/api](http://localhost:3002/api)     |
+| 2 – Backend    | `nx serve @epicure/backend`  | e.g. [http://localhost:3002/api/dishes](http://localhost:3002/api/dishes) |
 | 3 – Strapi CMS | `nx develop cms`             | [http://localhost:1337/admin](http://localhost:1337/admin) |
 
 
