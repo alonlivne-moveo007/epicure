@@ -1,7 +1,5 @@
 # Epicure
 
-
-
 ✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
 
 [Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/js?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
@@ -27,11 +25,13 @@ cd apps/cms && npm install && cd ../..
 
 Run the three apps in **separate terminals** from the repo root:
 
-| Terminal       | Command                          | URL                                                        |
-| -------------- | -------------------------------- | ---------------------------------------------------------- |
-| 1 – Frontend   | `nx serve @epicure/frontend`     | [http://localhost:3000](http://localhost:3000)             |
-| 2 – Backend    | `nx serve @epicure/backend`      | [http://localhost:3002/api](http://localhost:3002/api)     |
-| 3 – Strapi CMS | `nx develop cms`                | http://localhost:1337/admin                               |
+
+| Terminal       | Command                      | URL                                                        |
+| -------------- | ---------------------------- | ---------------------------------------------------------- |
+| 1 – Frontend   | `nx serve @epicure/frontend` | [http://localhost:3000](http://localhost:3000)             |
+| 2 – Backend    | `nx serve @epicure/backend`  | [http://localhost:3002/api](http://localhost:3002/api)     |
+| 3 – Strapi CMS | `nx develop cms`             | [http://localhost:1337/admin](http://localhost:1337/admin) |
+
 
 You can also use the root scripts: `npm run frontend` and `npm run backend` (backend builds then runs with Node on port 3002).
 
@@ -56,22 +56,21 @@ Ensure root `.env` exists (or `apps/cms/.env`); the cms service loads it via doc
 If the Admin UI shows a spinner, **"is not a function"** in the console, or plugin deprecation warnings:
 
 1. **Rebuild the image from a clean state** (no cache):
-   ```sh
+  ```sh
    docker compose build --no-cache cms
    docker compose up cms
-   ```
+  ```
 2. **Align Strapi and plugins** (from repo root):
-   ```sh
+  ```sh
    cd apps/cms && npx @strapi/upgrade latest && cd ../..
-   ```
+  ```
    Then rebuild the cms image and run again.
-
 3. **Local clean build** (when developing cms outside Docker):
-   ```sh
+  ```sh
    cd apps/cms
    rm -rf build dist .cache .strapi/cache
    npm run build && npm run start
-   ```
+  ```
 
 ## Finish your CI setup
 

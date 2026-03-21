@@ -1,0 +1,483 @@
+{
+  "info": {
+    "name": "Strapi CMS API",
+    "description": "REST CRUD for Strapi collection types: dishes, restaurants, chefs, tags. You will get 403 until Settings → Users & Permissions → Roles grants access for the `find` / `findOne` / `create` / `update` / `delete` actions, or you use a valid API token. In Postman: Collection → Authorization → Type Bearer Token, Token `{{apiToken}}`, and set the `apiToken` collection variable.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:1337"
+    },
+    {
+      "key": "apiToken",
+      "value": ""
+    },
+    {
+      "key": "dishId",
+      "value": "1"
+    },
+    {
+      "key": "restaurantId",
+      "value": "1"
+    },
+    {
+      "key": "chefId",
+      "value": "1"
+    },
+    {
+      "key": "tagId",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Dishes",
+      "item": [
+        {
+          "name": "GET /api/dishes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dishes?populate=*",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dishes"],
+              "query": [
+                {
+                  "key": "populate",
+                  "value": "*"
+                }
+              ]
+            },
+            "description": "List all dishes. `populate=*` includes first-level relations and media."
+          }
+        },
+        {
+          "name": "GET /api/dishes/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dishes/{{dishId}}?populate=*",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dishes", "{{dishId}}"],
+              "query": [
+                {
+                  "key": "populate",
+                  "value": "*"
+                }
+              ]
+            },
+            "description": "Get a single dish by document id. `populate=*` includes first-level relations and media."
+          }
+        },
+        {
+          "name": "POST /api/dishes",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"name\": \"Example Dish\",\n    \"description\": \"Optional description\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/dishes?populate=*",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dishes"],
+              "query": [
+                {
+                  "key": "populate",
+                  "value": "*"
+                }
+              ]
+            },
+            "description": "Create a dish. Adjust `data` fields to match your Strapi schema (and relations as id or connect syntax). `populate=*` shapes the created entry in the response."
+          }
+        },
+        {
+          "name": "PUT /api/dishes/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"name\": \"Updated Dish Name\",\n    \"description\": \"Updated description\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/dishes/{{dishId}}?populate=*",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dishes", "{{dishId}}"],
+              "query": [
+                {
+                  "key": "populate",
+                  "value": "*"
+                }
+              ]
+            },
+            "description": "Update a dish by id. `populate=*` shapes the updated entry in the response."
+          }
+        },
+        {
+          "name": "DELETE /api/dishes/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dishes/{{dishId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dishes", "{{dishId}}"]
+            },
+            "description": "Delete a dish by id."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Restaurants",
+      "item": [
+        {
+          "name": "GET /api/restaurants",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/restaurants?populate=*",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "restaurants"],
+              "query": [
+                {
+                  "key": "populate",
+                  "value": "*"
+                }
+              ]
+            },
+            "description": "List all restaurants. `populate=*` includes first-level relations and media."
+          }
+        },
+        {
+          "name": "GET /api/restaurants/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/restaurants/{{restaurantId}}?populate=*",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "restaurants", "{{restaurantId}}"],
+              "query": [
+                {
+                  "key": "populate",
+                  "value": "*"
+                }
+              ]
+            },
+            "description": "Get a single restaurant by document id. `populate=*` includes first-level relations and media."
+          }
+        },
+        {
+          "name": "POST /api/restaurants",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"name\": \"Example Restaurant\",\n    \"description\": \"Optional description\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/restaurants?populate=*",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "restaurants"],
+              "query": [
+                {
+                  "key": "populate",
+                  "value": "*"
+                }
+              ]
+            },
+            "description": "Create a restaurant. Replace body keys with your actual Strapi attributes. `populate=*` shapes the created entry in the response."
+          }
+        },
+        {
+          "name": "PUT /api/restaurants/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"name\": \"Updated Restaurant\",\n    \"description\": \"Updated description\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/restaurants/{{restaurantId}}?populate=*",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "restaurants", "{{restaurantId}}"],
+              "query": [
+                {
+                  "key": "populate",
+                  "value": "*"
+                }
+              ]
+            },
+            "description": "Update a restaurant by id. `populate=*` shapes the updated entry in the response."
+          }
+        },
+        {
+          "name": "DELETE /api/restaurants/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/restaurants/{{restaurantId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "restaurants", "{{restaurantId}}"]
+            },
+            "description": "Delete a restaurant by id."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Chefs",
+      "item": [
+        {
+          "name": "GET /api/chefs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/chefs?populate=*",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "chefs"],
+              "query": [
+                {
+                  "key": "populate",
+                  "value": "*"
+                }
+              ]
+            },
+            "description": "List all chefs. `populate=*` includes first-level relations and media."
+          }
+        },
+        {
+          "name": "GET /api/chefs/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/chefs/{{chefId}}?populate=*",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "chefs", "{{chefId}}"],
+              "query": [
+                {
+                  "key": "populate",
+                  "value": "*"
+                }
+              ]
+            },
+            "description": "Get a single chef by document id. `populate=*` includes first-level relations and media."
+          }
+        },
+        {
+          "name": "POST /api/chefs",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"name\": \"Example Chef\",\n    \"bio\": \"Optional bio\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/chefs?populate=*",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "chefs"],
+              "query": [
+                {
+                  "key": "populate",
+                  "value": "*"
+                }
+              ]
+            },
+            "description": "Create a chef. Replace body keys with your actual Strapi attributes. `populate=*` shapes the created entry in the response."
+          }
+        },
+        {
+          "name": "PUT /api/chefs/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"name\": \"Updated Chef\",\n    \"bio\": \"Updated bio\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/chefs/{{chefId}}?populate=*",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "chefs", "{{chefId}}"],
+              "query": [
+                {
+                  "key": "populate",
+                  "value": "*"
+                }
+              ]
+            },
+            "description": "Update a chef by id. `populate=*` shapes the updated entry in the response."
+          }
+        },
+        {
+          "name": "DELETE /api/chefs/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/chefs/{{chefId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "chefs", "{{chefId}}"]
+            },
+            "description": "Delete a chef by id."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tags",
+      "item": [
+        {
+          "name": "GET /api/tags",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tags?populate=*",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tags"],
+              "query": [
+                {
+                  "key": "populate",
+                  "value": "*"
+                }
+              ]
+            },
+            "description": "List all tags. `populate=*` includes first-level relations and media."
+          }
+        },
+        {
+          "name": "GET /api/tags/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tags/{{tagId}}?populate=*",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tags", "{{tagId}}"],
+              "query": [
+                {
+                  "key": "populate",
+                  "value": "*"
+                }
+              ]
+            },
+            "description": "Get a single tag by document id. `populate=*` includes first-level relations and media."
+          }
+        },
+        {
+          "name": "POST /api/tags",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"name\": \"Example Tag\",\n    \"slug\": \"example-tag\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/tags?populate=*",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tags"],
+              "query": [
+                {
+                  "key": "populate",
+                  "value": "*"
+                }
+              ]
+            },
+            "description": "Create a tag. Replace body keys with your actual Strapi attributes (omit `slug` if your schema does not define it). `populate=*` shapes the created entry in the response."
+          }
+        },
+        {
+          "name": "PUT /api/tags/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"name\": \"Updated Tag\",\n    \"slug\": \"updated-tag\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/tags/{{tagId}}?populate=*",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tags", "{{tagId}}"],
+              "query": [
+                {
+                  "key": "populate",
+                  "value": "*"
+                }
+              ]
+            },
+            "description": "Update a tag by id. `populate=*` shapes the updated entry in the response."
+          }
+        },
+        {
+          "name": "DELETE /api/tags/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tags/{{tagId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tags", "{{tagId}}"]
+            },
+            "description": "Delete a tag by id."
+          }
+        }
+      ]
+    }
+  ]
+}

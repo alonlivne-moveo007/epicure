@@ -1,0 +1,9 @@
+$kind: http-request
+name: GET /api/dishes/:id
+description: Get a single dish by document id. `populate=*` includes first-level
+  relations and media.
+url: "{{baseUrl}}/api/dishes/{{dishId}}?populate=*"
+method: GET
+queryParams:
+  populate: "*"
+order: 2000

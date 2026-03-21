@@ -1,0 +1,20 @@
+$kind: http-request
+name: POST /api/chefs
+description: Create a chef. Replace body keys with your actual Strapi
+  attributes. `populate=*` shapes the created entry in the response.
+url: "{{baseUrl}}/api/chefs?populate=*"
+method: POST
+headers:
+  Content-Type: application/json
+queryParams:
+  populate: "*"
+body:
+  type: text
+  content: |-
+    {
+      "data": {
+        "name": "Example Chef",
+        "bio": "Optional bio"
+      }
+    }
+order: 3000

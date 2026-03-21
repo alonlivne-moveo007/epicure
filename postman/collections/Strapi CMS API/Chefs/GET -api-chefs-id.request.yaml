@@ -1,0 +1,9 @@
+$kind: http-request
+name: GET /api/chefs/:id
+description: Get a single chef by document id. `populate=*` includes first-level
+  relations and media.
+url: "{{baseUrl}}/api/chefs/{{chefId}}?populate=*"
+method: GET
+queryParams:
+  populate: "*"
+order: 2000

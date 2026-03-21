@@ -1,0 +1,19 @@
+$kind: http-request
+name: PUT /api/chefs/:id
+description: Update a chef by id. `populate=*` shapes the updated entry in the response.
+url: "{{baseUrl}}/api/chefs/{{chefId}}?populate=*"
+method: PUT
+headers:
+  Content-Type: application/json
+queryParams:
+  populate: "*"
+body:
+  type: text
+  content: |-
+    {
+      "data": {
+        "name": "Updated Chef",
+        "bio": "Updated bio"
+      }
+    }
+order: 4000

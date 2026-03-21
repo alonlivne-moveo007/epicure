@@ -1,0 +1,13 @@
+$kind: collection
+description: "REST CRUD for Strapi collection types: dishes, restaurants, chefs
+  (detected from your running Strapi). You will get 403 until Settings → Users &
+  Permissions → Roles grants access for the `find` / `findOne` / `create` /
+  `update` / `delete` actions, or you use a valid API token. In Postman:
+  Collection → Authorization → Type Bearer Token, Token `{{apiToken}}`, and set
+  the `apiToken` collection variable."
+variables:
+  baseUrl: http://localhost:1337
+  apiToken: ""
+  dishId: "1"
+  restaurantId: "1"
+  chefId: "1"

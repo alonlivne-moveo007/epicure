@@ -1,0 +1,6 @@
+$kind: http-request
+name: DELETE /api/chefs/:id
+description: Delete a chef by id.
+url: "{{baseUrl}}/api/chefs/{{chefId}}"
+method: DELETE
+order: 5000

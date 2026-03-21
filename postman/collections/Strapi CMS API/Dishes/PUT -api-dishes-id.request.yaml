@@ -1,11 +1,12 @@
 $kind: http-request
 name: PUT /api/dishes/:id
-description: Update an existing dish by ID. Set dishId in collection variables
-  or in the path. Authenticated requests may require a Bearer token.
-url: "{{baseUrl}}/api/dishes/{{dishId}}"
+description: Update a dish by id. `populate=*` shapes the updated entry in the response.
+url: "{{baseUrl}}/api/dishes/{{dishId}}?populate=*"
 method: PUT
 headers:
   Content-Type: application/json
+queryParams:
+  populate: "*"
 body:
   type: text
   content: |-

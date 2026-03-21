@@ -1,7 +1,6 @@
 $kind: http-request
 name: DELETE /api/dishes/:id
-description: Delete a dish by ID. Set dishId in collection variables. Typically
-  requires authentication.
+description: Delete a dish by id.
 url: "{{baseUrl}}/api/dishes/{{dishId}}"
 method: DELETE
 order: 5000

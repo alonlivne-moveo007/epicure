@@ -1,12 +1,14 @@
 $kind: http-request
 name: POST /api/dishes
-description: Create a new dish. Adjust body fields to match your Strapi dish
-  content-type. Authenticated requests may require a Bearer token in the
-  Authorization header.
-url: "{{baseUrl}}/api/dishes"
+description: Create a dish. Adjust `data` fields to match your Strapi schema
+  (and relations as id or connect syntax). `populate=*` shapes the created entry
+  in the response.
+url: "{{baseUrl}}/api/dishes?populate=*"
 method: POST
 headers:
   Content-Type: application/json
+queryParams:
+  populate: "*"
 body:
   type: text
   content: |-

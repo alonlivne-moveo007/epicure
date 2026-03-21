@@ -1,0 +1,8 @@
+$kind: http-request
+name: GET /api/chefs
+description: List all chefs. `populate=*` includes first-level relations and media.
+url: "{{baseUrl}}/api/chefs?populate=*"
+method: GET
+queryParams:
+  populate: "*"
+order: 1000

@@ -1,6 +1,0 @@
-$kind: http-request
-name: GET /api/dishes
-description: List all dishes.
-url: "{{baseUrl}}/api/dishes"
-method: GET
-order: 1000

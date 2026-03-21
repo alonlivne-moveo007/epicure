@@ -5,7 +5,7 @@ workspace:
 # Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
 cloudResources:
   collections:
-    ../postman/collections/Strapi Dishes API: 21a9e0e3-5e65-484f-8741-0a422ffe9432
+    ../postman/collections/Strapi CMS API: 7b420ff5-c56c-47fd-a64d-2f3909f12513
 
 # All resources in the `postman/` folder are automatically registered in Local View.
 # Point to additional files outside the `postman/` folder to register them individually. Example:

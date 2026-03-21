@@ -1,0 +1,6 @@
+$kind: http-request
+name: DELETE /api/restaurants/:id
+description: Delete a restaurant by id.
+url: "{{baseUrl}}/api/restaurants/{{restaurantId}}"
+method: DELETE
+order: 5000

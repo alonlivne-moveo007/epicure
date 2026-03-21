@@ -1,0 +1,8 @@
+$kind: http-request
+name: GET /api/restaurants
+description: List all restaurants. `populate=*` includes first-level relations and media.
+url: "{{baseUrl}}/api/restaurants?populate=*"
+method: GET
+queryParams:
+  populate: "*"
+order: 1000

@@ -1,0 +1,9 @@
+$kind: http-request
+name: GET /api/restaurants/:id
+description: Get a single restaurant by document id. `populate=*` includes
+  first-level relations and media.
+url: "{{baseUrl}}/api/restaurants/{{restaurantId}}?populate=*"
+method: GET
+queryParams:
+  populate: "*"
+order: 2000

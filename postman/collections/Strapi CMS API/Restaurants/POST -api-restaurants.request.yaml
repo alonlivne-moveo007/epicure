@@ -1,0 +1,20 @@
+$kind: http-request
+name: POST /api/restaurants
+description: Create a restaurant. Replace body keys with your actual Strapi
+  attributes. `populate=*` shapes the created entry in the response.
+url: "{{baseUrl}}/api/restaurants?populate=*"
+method: POST
+headers:
+  Content-Type: application/json
+queryParams:
+  populate: "*"
+body:
+  type: text
+  content: |-
+    {
+      "data": {
+        "name": "Example Restaurant",
+        "description": "Optional description"
+      }
+    }
+order: 3000
