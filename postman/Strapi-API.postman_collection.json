@@ -1,7 +1,7 @@
 {
   "info": {
     "name": "Strapi CMS API",
-    "description": "REST CRUD for Strapi collection types: dishes, restaurants, chefs, tags. You will get 403 until Settings → Users & Permissions → Roles grants access for the `find` / `findOne` / `create` / `update` / `delete` actions, or you use a valid API token. In Postman: Collection → Authorization → Type Bearer Token, Token `{{apiToken}}`, and set the `apiToken` collection variable.",
+    "description": "REST CRUD for Strapi collection types (dishes, restaurants, chefs, tags) against `{{baseUrl}}` (port 1337). You will get 403 until Settings → Users & Permissions → Roles grants access for the `find` / `findOne` / `create` / `update` / `delete` actions, or you use a valid API token. In Postman: Collection → Authorization → Type Bearer Token, Token `{{apiToken}}`, and set the `apiToken` collection variable.\n\n**Homepage — Nest BFF** exposes **GET only** at `{{backendUrl}}/api/homepage` (read-only); edit or delete the homepage in Strapi Admin. Nest proxies to Strapi using `CMS_URL` and `STRAPI_API_TOKEN` from `apps/backend/.env`. Grant the Public role or API token `find` permission for Homepage in Strapi.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
@@ -12,6 +12,10 @@
     {
       "key": "apiToken",
       "value": ""
+    },
+    {
+      "key": "backendUrl",
+      "value": "http://localhost:3002"
     },
     {
       "key": "dishId",
@@ -475,6 +479,30 @@
               "path": ["api", "tags", "{{tagId}}"]
             },
             "description": "Delete a tag by id."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Homepage — Nest BFF",
+      "item": [
+        {
+          "name": "GET /api/homepage",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{backendUrl}}/api/homepage?populate=*",
+              "host": ["{{backendUrl}}"],
+              "path": ["api", "homepage"],
+              "query": [
+                {
+                  "key": "populate",
+                  "value": "*"
+                }
+              ]
+            },
+            "description": "Read-only: proxied to Strapi GET /api/homepage. Query params are forwarded (e.g. nested `populate` for dynamic zones). Edit homepage in Strapi Admin."
           }
         }
       ]

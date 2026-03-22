@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_sections_restaurants",
+  "info": {
+    "displayName": "restaurants"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "restaurants": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::restaurant.restaurant"
+    }
+  },
+  "config": {}
+}

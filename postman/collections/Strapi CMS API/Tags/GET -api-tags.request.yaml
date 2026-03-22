@@ -1,0 +1,8 @@
+$kind: http-request
+name: GET /api/tags
+description: List all tags. `populate=*` includes first-level relations and media.
+url: "{{baseUrl}}/api/tags?populate=*"
+method: GET
+queryParams:
+  populate: "*"
+order: 1000

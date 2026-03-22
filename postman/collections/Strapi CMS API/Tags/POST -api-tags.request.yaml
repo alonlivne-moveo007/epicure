@@ -1,0 +1,21 @@
+$kind: http-request
+name: POST /api/tags
+description: Create a tag. Replace body keys with your actual Strapi attributes
+  (omit `slug` if your schema does not define it). `populate=*` shapes the
+  created entry in the response.
+url: "{{baseUrl}}/api/tags?populate=*"
+method: POST
+headers:
+  Content-Type: application/json
+queryParams:
+  populate: "*"
+body:
+  type: text
+  content: |-
+    {
+      "data": {
+        "name": "Example Tag",
+        "slug": "example-tag"
+      }
+    }
+order: 3000

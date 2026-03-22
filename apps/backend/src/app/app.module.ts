@@ -3,10 +3,12 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ChefController } from '../controllers/chef.controller';
 import { DishController } from '../controllers/dish.controller';
+import { HomepageController } from '../controllers/homepage.controller';
 import { RestaurantController } from '../controllers/restaurant.controller';
 import { TagController } from '../controllers/tag.controller';
 import { ChefService } from '../services/chef.service';
 import { DishService } from '../services/dish.service';
+import { HomepageService } from '../services/homepage.service';
 import { RestaurantService } from '../services/restaurant.service';
 import { TagService } from '../services/tag.service';
 import { StrapiHttpService } from '../services/strapi-http.service';
@@ -49,6 +51,7 @@ import { StrapiHttpService } from '../services/strapi-http.service';
     RestaurantController,
     ChefController,
     TagController,
+    HomepageController,
   ],
   providers: [
     StrapiHttpService,
@@ -56,6 +59,7 @@ import { StrapiHttpService } from '../services/strapi-http.service';
     RestaurantService,
     ChefService,
     TagService,
+    HomepageService,
   ],
 })
 /**
