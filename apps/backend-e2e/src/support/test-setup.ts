@@ -4,6 +4,7 @@ import axios from 'axios';
 module.exports = async function () {
   // Configure axios for tests to use.
   const host = process.env.HOST ?? 'localhost';
-  const port = process.env.PORT ?? '3000';
+  // Align with `apps/backend` default (`main.ts`: PORT || 3002).
+  const port = process.env.PORT ?? '3002';
   axios.defaults.baseURL = `http://${host}:${port}`;
 };
