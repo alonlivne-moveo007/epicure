@@ -1,5 +1,6 @@
 /**
- * chef controller
+ * Strapi core controller for the `chef` content-type.
+ * Exposes default REST handlers (list, findOne, create, update, delete) per Strapi routing and permissions.
  */
 
 import { factories } from '@strapi/strapi';

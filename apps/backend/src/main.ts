@@ -1,6 +1,6 @@
 /**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
+ * NestJS application entrypoint for local development and container runs.
+ * Registers a global `/api` prefix; listens on `PORT` (default 3002).
  */
 
 import { Logger } from '@nestjs/common';
@@ -14,7 +14,7 @@ async function bootstrap() {
   const port = process.env.PORT || 3002;
   await app.listen(port);
   Logger.log(
-    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`,
+    `Application is running on: http://localhost:${port}/${globalPrefix}`,
   );
 }
 

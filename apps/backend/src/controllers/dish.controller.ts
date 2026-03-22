@@ -1,3 +1,7 @@
+/**
+ * HTTP API for dishes. Proxies to Strapi collection REST (`GET/POST /api/dishes`, etc.).
+ */
+
 import { ApiResponse } from '@epicure/backend-types';
 import {
   Body,

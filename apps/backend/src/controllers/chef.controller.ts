@@ -1,3 +1,7 @@
+/**
+ * HTTP API for chefs. Proxies to Strapi collection REST (`GET/POST /api/chefs`, etc.).
+ */
+
 import { ApiResponse } from '@epicure/backend-types';
 import {
   Body,

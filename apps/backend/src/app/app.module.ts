@@ -58,4 +58,12 @@ import { StrapiHttpService } from '../services/strapi-http.service';
     TagService,
   ],
 })
+/**
+ * Root module: a thin backend-for-frontend over Strapi’s REST API.
+ *
+ * - `ConfigModule` loads `apps/backend/.env` (see `.env.example`).
+ * - `CMS_URL` – Strapi origin without a trailing slash; HTTP client base URL is `{CMS_URL}/api`.
+ * - `STRAPI_API_TOKEN` – Optional bearer token for authenticated Strapi requests (omit for public-only APIs).
+ * - `STRAPI_HTTP_DEBUG` – Set to `true` to log base URL and token presence (never logs the secret).
+ */
 export class AppModule {}

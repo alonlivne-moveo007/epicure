@@ -1,3 +1,7 @@
+/**
+ * HTTP API for restaurants. Proxies to Strapi collection REST (`GET/POST /api/restaurants`, etc.).
+ */
+
 import { ApiResponse } from '@epicure/backend-types';
 import {
   Body,

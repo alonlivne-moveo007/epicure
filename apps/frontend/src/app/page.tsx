@@ -1,9 +1,8 @@
+/**
+ * Default Nx Next.js starter home page (boilerplate). Replace with Epicure UI as features are built.
+ * Global styles: `src/app/global.css`.
+ */
 export default function Index() {
-  /*
-   * Replace the elements below with your own.
-   *
-   * Note: The corresponding styles are in the ./index.tailwind file.
-   */
   return (
     <div>
       <div className="wrapper">
@@ -11,7 +10,7 @@ export default function Index() {
           <div id="welcome">
             <h1>
               <span> Hello there, </span>
-              Welcome @epicure/frontend 👋
+              Welcome @epicure/frontend
             </h1>
           </div>
 

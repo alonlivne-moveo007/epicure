@@ -1,3 +1,7 @@
+/**
+ * Example App Router API route: returns JSON using the shared `ApiResponse` envelope from `@epicure/backend-types`.
+ */
+
 import type { ApiResponse } from '@epicure/backend-types';
 
 export async function GET() {

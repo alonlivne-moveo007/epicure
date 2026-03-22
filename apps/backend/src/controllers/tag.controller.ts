@@ -1,3 +1,7 @@
+/**
+ * HTTP API for tags. Proxies to Strapi collection REST (`GET/POST /api/tags`, etc.).
+ */
+
 import { ApiResponse } from '@epicure/backend-types';
 import {
   Body,

@@ -1,3 +1,7 @@
+/**
+ * Strapi proxy for the `chef` collection. Uses `populate: '*'` on reads/writes so relations are included.
+ */
+
 import { Injectable } from '@nestjs/common';
 import { StrapiHttpService } from './strapi-http.service';
 
