@@ -1,12 +1,14 @@
+const path = require('path');
 const nextJest = require('next/jest.js');
 
 const createJestConfig = nextJest({
-  dir: './',
+  // Nx runs Jest from the workspace root; Next must resolve `app/` relative to the frontend app.
+  dir: path.join(__dirname),
 });
 
 const config = {
   displayName: '@epicure/frontend',
-  preset: '../jest.preset.js',
+  preset: '../../jest.preset.js',
   transform: {
     '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nx/react/plugins/jest',
   },

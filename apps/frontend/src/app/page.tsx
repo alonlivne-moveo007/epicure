@@ -1,6 +1,6 @@
 /**
  * Default Nx Next.js starter home page (boilerplate). Replace with Epicure UI as features are built.
- * Global styles: `src/app/global.css`.
+ * Global styles: `src/app/global.scss`.
  */
 export default function Index() {
   return (

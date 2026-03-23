@@ -1,4 +1,4 @@
-import './global.css';
+import './global.scss';
 
 /** Default document metadata for the Epicure Next.js app (override in nested layouts or pages as needed). */
 export const metadata = {
