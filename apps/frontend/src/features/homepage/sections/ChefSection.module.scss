@@ -1,0 +1,55 @@
+// `ChefSection` — profile (portrait + bio) and a separate restaurants carousel block.
+
+.profileSection,
+.restaurantsSection {
+  max-width: 1000px;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: flex-start;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    gap: 2rem;
+  }
+}
+
+.portrait {
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f3f4f6;
+  max-width: 100%;
+}
+
+.portraitImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 280px;
+  object-fit: cover;
+}
+
+.copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.bio {
+  margin-top: 0.5rem;
+  color: #4b5563;
+  line-height: 1.55;
+}
+
+.cardItem {
+  min-width: 0;
+}

@@ -1,0 +1,14 @@
+// `TagsSection` — pill list with optional circular thumbnails.
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.tag {
+  display: inline-flex;
+}

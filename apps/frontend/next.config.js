@@ -10,6 +10,25 @@ const nextConfig = {
   // Use this to set Nx-specific options
   // See: https://nx.dev/recipes/next/next-config-setup
   nx: {},
+  /**
+   * Hosts allowed for `next/image` `src`. Homepage media comes from Strapi-populated URLs
+   * (e.g. Cloudinary). Add patterns here when the CMS or CDN origin changes.
+   */
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '1337',
+        pathname: '/uploads/**',
+      },
+    ],
+  },
 };
 
 const plugins = [

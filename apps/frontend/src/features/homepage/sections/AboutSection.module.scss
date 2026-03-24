@@ -1,0 +1,50 @@
+// `AboutSection` — two-column about block (copy + optional image) from Strapi.
+
+.section {
+  background: #fff;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2.5rem;
+  }
+}
+
+.copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.body {
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.para {
+  margin: 0 0 0.75rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.media {
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f3f4f6;
+  max-width: 100%;
+}
+
+.mediaImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}

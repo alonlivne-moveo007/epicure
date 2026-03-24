@@ -1,0 +1,82 @@
+// Styles for `HeroSection.tsx` — full-bleed hero, optional background image + scrim, fallback gradient.
+
+.hero {
+  position: relative;
+  min-height: clamp(220px, 45vw, 420px);
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem 1.25rem;
+  color: #faf7f2;
+  overflow: hidden;
+}
+
+.heroFallback {
+  background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+}
+
+.bg {
+  object-fit: cover;
+  z-index: 0;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.2) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.inner {
+  max-width: 42rem;
+}
+
+.innerWrap {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0;
+}
+
+.title {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.2;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+.heroFallback .title {
+  text-shadow: none;
+}
+
+.searchLabel {
+  margin-top: 1rem;
+}
+
+.searchFakeInput {
+  display: inline-block;
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

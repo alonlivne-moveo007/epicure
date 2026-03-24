@@ -1,6 +1,11 @@
+/**
+ * Root App Router layout for `@epicure/frontend`: global styles, document shell, default metadata.
+ * Feature routes can override `metadata` or add nested layouts under `app/`.
+ */
+
 import './global.scss';
 
-/** Default document metadata for the Epicure Next.js app (override in nested layouts or pages as needed). */
+/** Default document metadata (override in nested layouts or `page.tsx` as needed). */
 export const metadata = {
   title: 'Epicure',
   description: 'Epicure web application',

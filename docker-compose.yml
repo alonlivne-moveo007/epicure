@@ -19,8 +19,10 @@ services:
       - NODE_ENV=development
       - HOSTNAME=0.0.0.0
       - PORT=3000
-      # Frontend calls backend by service name (server-side)
+      # Browser / fallback when not in Docker
       - NEXT_PUBLIC_API_URL=http://localhost:3002
+      # Next.js Server Components call Nest by compose service name
+      - BFF_INTERNAL_URL=http://backend:3002
     volumes:
       - .:/app
       - /app/node_modules
