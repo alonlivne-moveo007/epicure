@@ -21,7 +21,7 @@
   flex-shrink: 0;
   border-radius: 12px;
   overflow: hidden;
-  background: #f3f4f6;
+  background: var(--color-cream);
   max-width: 100%;
 }
 
@@ -40,13 +40,13 @@
 
 .name {
   font-size: 1.5rem;
-  font-weight: 600;
-  color: #111827;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-black);
 }
 
 .bio {
   margin-top: 0.5rem;
-  color: #4b5563;
+  color: var(--color-gray);
   line-height: 1.55;
 }
 

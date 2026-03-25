@@ -1,15 +1,19 @@
 .section {
-  padding: 2.5rem 1.25rem;
-  max-width: 1200px;
+  padding: var(--section-padding-top) var(--container-padding-mobile);
+  max-width: var(--container-max-width);
   margin: 0 auto;
+
+  @media (min-width: 1024px) {
+    padding: var(--section-padding-top) var(--container-padding-desktop);
+  }
 }
 
 .heading {
   font-size: 1.125rem;
-  font-weight: 500;
+  font-weight: var(--font-weight-thin);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #1f2937;
+  color: var(--color-black);
   margin-bottom: 1.25rem;
   text-align: center;
 }
@@ -19,7 +23,7 @@
 }
 
 .footer {
-  margin-top: 1.25rem;
+  margin-top: var(--spacing-sm);
   display: flex;
   justify-content: flex-end;
 }

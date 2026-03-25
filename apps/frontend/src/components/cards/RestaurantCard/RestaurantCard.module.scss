@@ -1,13 +1,13 @@
 .card {
   border-radius: 12px;
   overflow: hidden;
-  background: #f8f8f5;
+  background: var(--color-white-off);
 }
 
 .thumb {
   position: relative;
   aspect-ratio: 16 / 10;
-  background: #f3f4f6;
+  background: var(--color-cream);
 }
 
 .img {
@@ -24,21 +24,21 @@
 .name {
   font-size: clamp(1.5rem, 2vw, 2.25rem);
   line-height: 1.1;
-  font-weight: 400;
-  color: #111827;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-black);
 }
 
 .subtitle {
   margin-top: 0.2rem;
   font-size: 1.15rem;
-  color: #6b7280;
-  font-weight: 300;
+  color: var(--color-gray);
+  font-weight: var(--font-weight-thin);
 }
 
 .rating {
   margin-top: 0.35rem;
   font-size: 1.55rem;
   line-height: 1;
-  color: #c59423;
+  color: var(--color-gold);
   letter-spacing: 0.08em;
 }

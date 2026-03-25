@@ -4,6 +4,8 @@
  */
 
 import './global.scss';
+import { Header } from '../components/layout/Header/Header';
+import { Footer } from '../components/layout/Footer/Footer';
 
 /** Default document metadata (override in nested layouts or `page.tsx` as needed). */
 export const metadata = {
@@ -21,7 +23,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Header />
+        <main>{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

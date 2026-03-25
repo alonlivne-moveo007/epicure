@@ -1,13 +1,13 @@
 .card {
   border-radius: 12px;
   overflow: hidden;
-  background: #f8f8f5;
+  background: var(--color-white-off);
 }
 
 .thumb {
   position: relative;
   aspect-ratio: 4 / 3;
-  background: #f3f4f6;
+  background: var(--color-cream);
 }
 
 .img {
@@ -24,8 +24,8 @@
 .name {
   font-size: 1.5rem;
   line-height: 1.15;
-  font-weight: 400;
-  color: #111827;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-black);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -40,14 +40,14 @@
   letter-spacing: 0.06em;
   padding: 0.2rem 0.45rem;
   border-radius: 4px;
-  background: #fef3c7;
-  color: #92400e;
+  background: var(--color-cream);
+  color: var(--color-black);
 }
 
 .desc {
   margin-top: 0.45rem;
   font-size: 1rem;
-  color: #6b7280;
+  color: var(--color-gray);
   line-height: 1.45;
   min-height: 4.2em;
 }
@@ -55,5 +55,5 @@
 .price {
   margin-top: 0.55rem;
   font-size: 1.2rem;
-  color: #111827;
+  color: var(--color-black);
 }
