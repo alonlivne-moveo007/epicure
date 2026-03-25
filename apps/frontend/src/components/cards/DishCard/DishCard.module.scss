@@ -2,9 +2,10 @@
 
 .card {
   overflow: hidden;
-  background: var(--color-cream); /* #F9F4EA — both SVGs use this for the content area */
+  background: var(--color-cream);
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 /* Mobile: 245×152 image → aspect ~8:5. Desktop: 380×306 → aspect ~5:4. */

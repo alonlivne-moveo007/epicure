@@ -1,4 +1,6 @@
-// `TagsSection` — pill list with optional circular thumbnails.
+.section {
+  background: var(--color-gray-light);
+}
 
 .list {
   list-style: none;
@@ -6,9 +8,20 @@
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.65rem;
+  justify-content: center;
+  gap: 2rem;
 }
 
 .tag {
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-black);
+  text-align: center;
 }
