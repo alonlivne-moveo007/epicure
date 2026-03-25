@@ -37,20 +37,20 @@
   color: var(--color-black);
 
   @media (min-width: 768px) {
-    font-size: 2.5rem; /* 40px — desktop H3 */
+    font-size: var(--font-size-h3); /* 40px — desktop H3 */
     text-align: center;
   }
 }
 
 .desc {
   margin-top: 0.5rem;
-  font-size: 1rem; /* 16px — mobile body */
+  font-size: var(--font-size-button); /* 16px — mobile body */
   color: var(--color-gray);
   font-weight: var(--font-weight-thin);
   line-height: 1.45;
 
   @media (min-width: 768px) {
-    font-size: 1.5rem; /* 24px — desktop body */
+    font-size: var(--font-size-body); /* 24px — desktop body */
     text-align: center;
   }
 }
@@ -92,12 +92,12 @@
   align-items: center;
   gap: 0.3rem;
   flex-shrink: 0;
-  font-size: 1rem; /* 16px mobile */
+  font-size: var(--font-size-button); /* 16px mobile */
   font-weight: var(--font-weight-thin);
   color: var(--color-black);
 
   @media (min-width: 768px) {
-    font-size: 1.5rem; /* 24px desktop */
+    font-size: var(--font-size-body); /* 24px desktop */
   }
 }
 

@@ -28,7 +28,7 @@
 }
 
 .bio {
-  font-size: 1rem; /* 16px — mobile body */
+  font-size: var(--font-size-button); /* 16px — mobile body */
   font-weight: var(--font-weight-thin);
   color: var(--color-black); /* Figma bio path: fill="black" */
   line-height: 1.55;
@@ -36,7 +36,7 @@
   @media (min-width: 768px) {
     flex: 1;
     min-width: 0;
-    font-size: 1.5rem; /* 24px — desktop body */
+    font-size: var(--font-size-body); /* 24px — desktop body */
   }
 }
 

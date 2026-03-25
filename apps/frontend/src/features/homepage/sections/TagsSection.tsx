@@ -15,7 +15,8 @@ export function TagsSection(props: SectionsTags) {
   const list = tags ?? [];
 
   return (
-    <SectionWrapper title={title} titleId="tags-heading" className={styles.section}>
+    <div className={styles.wrapper}>
+    <SectionWrapper title={title} titleId="tags-heading">
       <ul className={styles.list}>
         {list.map((t) => {
           const src = strapiImageSrc(t.image);
@@ -29,5 +30,6 @@ export function TagsSection(props: SectionsTags) {
         })}
       </ul>
     </SectionWrapper>
+    </div>
   );
 }

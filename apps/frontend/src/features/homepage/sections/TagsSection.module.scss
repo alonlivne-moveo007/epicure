@@ -1,5 +1,6 @@
-.section {
+.wrapper {
   background: var(--color-gray-light);
+  width: 100%;
 }
 
 .list {
@@ -20,7 +21,7 @@
 }
 
 .label {
-  font-size: 0.875rem;
+  font-size: var(--font-size-label);
   font-weight: var(--font-weight-regular);
   color: var(--color-black);
   text-align: center;

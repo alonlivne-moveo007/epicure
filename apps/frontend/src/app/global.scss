@@ -19,6 +19,15 @@
   --font-weight-thin: 100;
   --font-weight-regular: 400;
 
+  // Font sizes (source: "03 DESKTOP/MOBILE TYPOGRAPHY" pages)
+  --font-size-h1: 2rem;        /* 32px */
+  --font-size-h2: 1.875rem;    /* 30px */
+  --font-size-h3: 2.5rem;      /* 40px */
+  --font-size-body: 1.5rem;    /* 24px */
+  --font-size-button: 1rem;    /* 16px */
+  --font-size-input: 1rem;     /* 16px */
+  --font-size-label: 0.875rem; /* 14px */
+
   // Layout — Desktop (source: "01 GRID" + "02 LAYOUT" pages)
   --container-max-width: 1440px;
   --container-padding-desktop: 128px;
