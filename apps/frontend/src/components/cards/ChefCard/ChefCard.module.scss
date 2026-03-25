@@ -1,0 +1,36 @@
+/* Aspect ratio taken directly from the Figma card dimensions (433×338). */
+.card {
+  position: relative;
+  aspect-ratio: 433 / 338;
+  overflow: hidden;
+  background: var(--color-black); /* fallback while image loads */
+}
+
+.img {
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: auto 0 0; /* sticks to the bottom edge, full width */
+  background: color-mix(in srgb, var(--color-white) 80%, transparent); /* Figma fill-opacity="0.8" */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1rem;
+
+  @media (min-width: 768px) {
+    padding: 1.25rem 1rem;
+  }
+}
+
+.name {
+  text-align: center;
+  font-size: 1rem; /* 16px — mobile body */
+  font-weight: var(--font-weight-thin);
+  color: var(--color-black);
+
+  @media (min-width: 768px) {
+    font-size: 1.5rem; /* 24px — desktop body */
+  }
+}

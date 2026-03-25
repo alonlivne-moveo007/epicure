@@ -1,5 +1,5 @@
 /**
- * Renders `sections.dishs` (Strapi UID): grid of dishes with optional `isPopular` badge and image.
+ * Renders `sections.dishs` (Strapi UID): grid of dishes with image and tag chip.
  */
 
 import { DishCard } from '@/components/cards/DishCard/DishCard';
@@ -23,15 +23,18 @@ export function DishesSection(props: SectionsDishs) {
       <Carousel ariaLabel="Signature dishes">
         {list.map((d) => {
           const imageUrl = strapiImageSrc(d.image);
-          const priceLabel = d.price != null ? `₪${d.price}` : null;
+          const tags = (d.tags ?? []).map((t) => ({
+            name: t.name ?? null,
+            iconSrc: strapiImageSrc(t.image) ?? null,
+          }));
           return (
             <div key={d.id ?? d.name} className={styles.cardItem}>
               <DishCard
                 imageUrl={imageUrl}
                 name={d.name}
                 description={d.description}
-                showPopular={Boolean(d.isPopular)}
-                priceLabel={priceLabel}
+                price={d.price}
+                tags={tags}
               />
             </div>
           );

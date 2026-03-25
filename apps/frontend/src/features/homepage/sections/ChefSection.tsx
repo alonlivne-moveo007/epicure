@@ -1,10 +1,10 @@
 /**
- * Renders `sections.chef`: featured chef (image, name, bio) and a horizontal carousel of
- * restaurants when Strapi returns them on the populated `chef` relation.
+ * Renders `sections.chef`: featured chef card (image + name overlay) with bio below,
+ * and a horizontal carousel of restaurants when Strapi returns them on the populated
+ * `chef` relation.
  */
 
-import Image from 'next/image';
-
+import { ChefCard } from '@/components/cards/ChefCard/ChefCard';
 import { RestaurantCard } from '@/components/cards/RestaurantCard/RestaurantCard';
 import { Carousel } from '@/components/carousel/Carousel.client';
 import { SectionWrapper } from '@/components/layout/SectionWrapper/SectionWrapper';
@@ -36,23 +36,13 @@ export function ChefSection(props: SectionsChef) {
   return (
     <>
       <SectionWrapper title={title} titleId="chef-heading" className={styles.profileSection}>
-        <div className={styles.layout}>
+        <div className={styles.body}>
           {src ? (
-            <div className={styles.portrait}>
-              <Image
-                src={src}
-                alt={chef.name ?? 'Chef'}
-                width={280}
-                height={320}
-                className={styles.portraitImg}
-                sizes="(max-width: 768px) 100vw, 280px"
-              />
+            <div className={styles.cardWrap}>
+              <ChefCard imageUrl={src} name={chef.name ?? ''} />
             </div>
           ) : null}
-          <div className={styles.copy}>
-            {chef.name ? <h3 className={styles.name}>{chef.name}</h3> : null}
-            {chef.bio ? <p className={styles.bio}>{chef.bio}</p> : null}
-          </div>
+          {chef.bio ? <p className={styles.bio}>{chef.bio}</p> : null}
         </div>
       </SectionWrapper>
 

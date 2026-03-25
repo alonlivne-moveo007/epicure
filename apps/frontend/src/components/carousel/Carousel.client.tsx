@@ -1,7 +1,7 @@
 'use client';
 
-import { Children, type ReactNode } from 'react';
-import { useRef } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
+import { Children, type KeyboardEvent, type ReactNode } from 'react';
 
 import styles from './Carousel.module.scss';
 
@@ -11,54 +11,32 @@ export type CarouselProps = {
   className?: string;
 };
 
-/**
- * Lightweight reusable horizontal carousel with scroll-snap and optional arrow controls.
- */
-export function Carousel(props: CarouselProps) {
-  const { children, ariaLabel, className } = props;
-  const trackRef = useRef<HTMLDivElement | null>(null);
+export function Carousel({ children, ariaLabel, className }: CarouselProps) {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ align: 'start' });
   const slides = Children.toArray(children);
 
-  const scrollByPage = (direction: -1 | 1) => {
-    const track = trackRef.current;
-    if (!track) return;
-    const amount = Math.max(track.clientWidth * 0.86, 240) * direction;
-    track.scrollBy({ left: amount, behavior: 'smooth' });
+  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'ArrowLeft') emblaApi?.scrollPrev();
+    if (e.key === 'ArrowRight') emblaApi?.scrollNext();
   };
 
   return (
-    <div className={[styles.root, className].filter(Boolean).join(' ')}>
-      <button
-        type="button"
-        className={styles.arrow}
-        aria-label="Scroll carousel left"
-        onClick={() => scrollByPage(-1)}
-      >
-        &#8249;
-      </button>
-
-      <div
-        ref={trackRef}
-        className={styles.track}
-        role="region"
-        aria-roledescription="carousel"
-        aria-label={ariaLabel}
-      >
-        {slides.map((child, index) => (
-          <div key={index} className={styles.slide}>
+    <div
+      ref={emblaRef}
+      className={[styles.viewport, className].filter(Boolean).join(' ')}
+      role="region"
+      aria-roledescription="carousel"
+      aria-label={ariaLabel}
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+    >
+      <div className={styles.track}>
+        {slides.map((child, i) => (
+          <div key={i} className={styles.slide} role="group" aria-roledescription="slide">
             {child}
           </div>
         ))}
       </div>
-
-      <button
-        type="button"
-        className={styles.arrow}
-        aria-label="Scroll carousel right"
-        onClick={() => scrollByPage(1)}
-      >
-        &#8250;
-      </button>
     </div>
   );
 }

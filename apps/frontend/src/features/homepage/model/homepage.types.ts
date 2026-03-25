@@ -43,8 +43,8 @@ export type StrapiDish = {
   name?: string;
   description?: string | null;
   price?: number | null;
-  isPopular?: boolean | null;
   image?: unknown;
+  tags?: StrapiTag[] | null;
 };
 
 /** Tag row as populated for `sections.tags`. */

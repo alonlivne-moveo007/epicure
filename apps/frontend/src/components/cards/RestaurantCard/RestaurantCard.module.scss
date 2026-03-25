@@ -1,13 +1,11 @@
 .card {
-  border-radius: 12px;
   overflow: hidden;
-  background: var(--color-white-off);
+  background: var(--color-cream);
 }
 
 .thumb {
   position: relative;
   aspect-ratio: 16 / 10;
-  background: var(--color-cream);
 }
 
 .img {
@@ -22,7 +20,7 @@
 }
 
 .name {
-  font-size: clamp(1.5rem, 2vw, 2.25rem);
+  font-size: 1.125rem; /* 18px — mobile H3 */
   line-height: 1.1;
   font-weight: var(--font-weight-regular);
   color: var(--color-black);
@@ -30,15 +28,30 @@
 
 .subtitle {
   margin-top: 0.2rem;
-  font-size: 1.15rem;
+  font-size: 1rem; /* 16px — mobile body */
   color: var(--color-gray);
   font-weight: var(--font-weight-thin);
 }
 
 .rating {
+  display: none; /* hidden on mobile */
   margin-top: 0.35rem;
   font-size: 1.55rem;
   line-height: 1;
   color: var(--color-gold);
   letter-spacing: 0.08em;
+}
+
+@media (min-width: 768px) {
+  .name {
+    font-size: 2.5rem; /* 40px — desktop H3 */
+  }
+
+  .subtitle {
+    font-size: 1.5rem; /* 24px — desktop body */
+  }
+
+  .rating {
+    display: block;
+  }
 }

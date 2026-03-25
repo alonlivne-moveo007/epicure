@@ -18,10 +18,6 @@
     "description": {
       "type": "text"
     },
-    "isPopular": {
-      "type": "boolean",
-      "default": false
-    },
     "price": {
       "type": "integer",
       "default": 0

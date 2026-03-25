@@ -2,19 +2,28 @@ import Image from 'next/image';
 
 import styles from './DishCard.module.scss';
 
+export type DishCardTag = {
+  name?: string | null;
+  iconSrc?: string | null;
+};
+
 export type DishCardProps = {
   imageUrl?: string;
   name?: string | null;
   description?: string | null;
-  priceLabel?: string | null;
-  showPopular?: boolean;
+  /** Raw numeric price — formatted with the ILS icon internally. */
+  price?: number | null;
+  tags?: DishCardTag[] | null;
 };
 
 /**
  * Presentational dish card for homepage rows and restaurant detail lists.
+ *
+ * Desktop price: flanked by two horizontal `var(--color-gray)` lines (Figma spec).
+ * Mobile price: left-aligned ILS icon + amount, no lines.
  */
-export function DishCard(props: DishCardProps) {
-  const { imageUrl, name, description, priceLabel, showPopular } = props;
+export function DishCard({ imageUrl, name, description, price, tags }: DishCardProps) {
+  const visibleTags = tags?.filter((t) => t.name && t.iconSrc) ?? [];
 
   return (
     <article className={styles.card}>
@@ -23,20 +32,41 @@ export function DishCard(props: DishCardProps) {
           <Image
             src={imageUrl}
             alt={name ?? 'Dish'}
-            width={320}
-            height={220}
+            fill
             className={styles.img}
-            sizes="(max-width: 768px) 80vw, 25vw"
+            sizes="(max-width: 768px) 84vw, 33vw"
           />
         </div>
       ) : null}
+
       <div className={styles.body}>
-        <h3 className={styles.name}>
-          {name}
-          {showPopular ? <span className={styles.badge}>Popular</span> : null}
-        </h3>
+        {name ? <h3 className={styles.name}>{name}</h3> : null}
         {description ? <p className={styles.desc}>{description}</p> : null}
-        {priceLabel ? <p className={styles.price}>{priceLabel}</p> : null}
+
+        {visibleTags.length > 0 ? (
+          <div className={styles.tagRow}>
+            {visibleTags.map((t) => (
+              <Image key={t.name} src={t.iconSrc!} alt={t.name!} width={40} height={40} />
+            ))}
+          </div>
+        ) : null}
+
+        {price != null ? (
+          <div className={styles.priceRow}>
+            <span className={styles.priceLine} aria-hidden="true" />
+            <span className={styles.priceAmount}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/icons/ils.svg"
+                alt=""
+                aria-hidden="true"
+                className={styles.ilsIcon}
+              />
+              {price}
+            </span>
+            <span className={styles.priceLine} aria-hidden="true" />
+          </div>
+        ) : null}
       </div>
     </article>
   );

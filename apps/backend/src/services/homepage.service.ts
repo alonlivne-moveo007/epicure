@@ -26,7 +26,12 @@ const DEFAULT_HOMEPAGE_QUERY: StrapiQueryParams = {
         },
         'sections.dishs': {
           populate: {
-            dishes: { populate: '*' },
+            dishes: {
+              populate: {
+                image: true,
+                tags: { populate: ['image'] },
+              },
+            },
           },
         },
         'sections.tags': {

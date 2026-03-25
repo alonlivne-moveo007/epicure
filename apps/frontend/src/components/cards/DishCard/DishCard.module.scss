@@ -1,59 +1,111 @@
+/* Matches Figma "Size=Big" (desktop) and "Property 1=Small" (mobile) specs. */
+
 .card {
-  border-radius: 12px;
   overflow: hidden;
-  background: var(--color-white-off);
+  background: var(--color-cream); /* #F9F4EA — both SVGs use this for the content area */
+  display: flex;
+  flex-direction: column;
 }
 
+/* Mobile: 245×152 image → aspect ~8:5. Desktop: 380×306 → aspect ~5:4. */
 .thumb {
   position: relative;
-  aspect-ratio: 4 / 3;
-  background: var(--color-cream);
+  aspect-ratio: 8 / 5;
+  flex-shrink: 0;
+
+  @media (min-width: 768px) {
+    aspect-ratio: 5 / 4;
+  }
 }
 
 .img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
 }
 
 .body {
-  padding: 0.85rem 1rem 1.1rem;
-  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
 }
 
+/* Mobile name: left-aligned (x≈19 in 245px SVG). Desktop: centered (x≈128 in 380px SVG). */
 .name {
-  font-size: 1.5rem;
-  line-height: 1.15;
+  font-size: 1.125rem; /* 18px — mobile H3 */
   font-weight: var(--font-weight-regular);
   color: var(--color-black);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-}
 
-.badge {
-  font-size: 0.65rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 0.2rem 0.45rem;
-  border-radius: 4px;
-  background: var(--color-cream);
-  color: var(--color-black);
+  @media (min-width: 768px) {
+    font-size: 2.5rem; /* 40px — desktop H3 */
+    text-align: center;
+  }
 }
 
 .desc {
-  margin-top: 0.45rem;
-  font-size: 1rem;
+  margin-top: 0.5rem;
+  font-size: 1rem; /* 16px — mobile body */
   color: var(--color-gray);
+  font-weight: var(--font-weight-thin);
   line-height: 1.45;
-  min-height: 4.2em;
+
+  @media (min-width: 768px) {
+    font-size: 1.5rem; /* 24px — desktop body */
+    text-align: center;
+  }
 }
 
-.price {
-  margin-top: 0.55rem;
-  font-size: 1.2rem;
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+/* ─── Price row ──────────────────────────────────────────────────────────── */
+/* Mobile: ILS icon + amount, left-aligned, no lines.
+   Desktop: ─── ILS {price} ───  (Figma: two #979797 lines, stroke 0.5px). */
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 1.25rem;
+}
+
+/* Hidden on mobile, flex: 1 line on desktop. */
+.priceLine {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+    flex: 1;
+    height: 0.5px;
+    background: var(--color-gray); /* #979797 — matches Figma line stroke */
+  }
+}
+
+.priceAmount {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex-shrink: 0;
+  font-size: 1rem; /* 16px mobile */
+  font-weight: var(--font-weight-thin);
   color: var(--color-black);
+
+  @media (min-width: 768px) {
+    font-size: 1.5rem; /* 24px desktop */
+  }
+}
+
+/* ILS icon: smaller on mobile (8px from Figma), larger on desktop (14px). */
+.ilsIcon {
+  width: 10px;
+  height: auto;
+
+  @media (min-width: 768px) {
+    width: 14px;
+  }
 }

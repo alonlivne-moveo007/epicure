@@ -1,53 +1,43 @@
-// `ChefSection` — profile (portrait + bio) and a separate restaurants carousel block.
+/* `ChefSection` — chef card (image + name overlay) with bio beside it on desktop,
+   and a restaurants carousel below. */
 
-.profileSection,
+/* profileSection uses full container width — no max-width override needed here. */
 .restaurantsSection {
   max-width: 1000px;
 }
 
-.layout {
+/* Mobile: card above bio. Desktop: card LEFT (~40%), bio RIGHT, 64px gap (matches Figma). */
+.body {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  align-items: flex-start;
+  gap: 1.5rem;
 
-  @media (min-width: 640px) {
+  @media (min-width: 768px) {
     flex-direction: row;
-    gap: 2rem;
+    align-items: flex-start;
+    gap: 4rem; /* 64px — Figma gap between card edge and bio start */
   }
 }
 
-.portrait {
+.cardWrap {
   flex-shrink: 0;
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--color-cream);
-  max-width: 100%;
-}
 
-.portraitImg {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-width: 280px;
-  object-fit: cover;
-}
-
-.copy {
-  flex: 1;
-  min-width: 0;
-}
-
-.name {
-  font-size: 1.5rem;
-  font-weight: var(--font-weight-regular);
-  color: var(--color-black);
+  @media (min-width: 768px) {
+    width: min(40%, 433px); /* 40% of container, capped at Figma card width */
+  }
 }
 
 .bio {
-  margin-top: 0.5rem;
-  color: var(--color-gray);
+  font-size: 1rem; /* 16px — mobile body */
+  font-weight: var(--font-weight-thin);
+  color: var(--color-black); /* Figma bio path: fill="black" */
   line-height: 1.55;
+
+  @media (min-width: 768px) {
+    flex: 1;
+    min-width: 0;
+    font-size: 1.5rem; /* 24px — desktop body */
+  }
 }
 
 .cardItem {

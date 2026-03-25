@@ -2,8 +2,9 @@
  * Renders `sections.tags`: horizontal wrap of tag chips with optional thumbnail from Strapi media.
  */
 
+import Image from 'next/image';
+
 import { SectionWrapper } from '@/components/layout/SectionWrapper/SectionWrapper';
-import { TagChip } from '@/components/tags/TagChip/TagChip';
 import type { SectionsTags } from '@/features/homepage/model/homepage.types';
 import { strapiImageSrc } from '@/lib/strapi-media';
 
@@ -18,9 +19,10 @@ export function TagsSection(props: SectionsTags) {
       <ul className={styles.list}>
         {list.map((t) => {
           const src = strapiImageSrc(t.image);
+          if (!src) return null;
           return (
             <li key={t.id ?? t.slug ?? t.name} className={styles.tag}>
-              <TagChip label={t.name ?? ''} iconSrc={src} />
+              <Image src={src} alt={t.name ?? ''} width={40} height={40} />
             </li>
           );
         })}
