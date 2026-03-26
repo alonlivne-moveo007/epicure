@@ -1,9 +1,11 @@
+@use '../../../app/styles/breakpoints' as bp;
+
 .section {
   padding: var(--section-padding-top) var(--container-padding-mobile);
   max-width: var(--container-max-width);
   margin: 0 auto;
 
-  @media (min-width: 1024px) {
+  @media (min-width: bp.$lg) {
     padding: var(--section-padding-top) var(--container-padding-desktop);
   }
 }

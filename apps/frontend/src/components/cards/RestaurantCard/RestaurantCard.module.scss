@@ -1,3 +1,5 @@
+@use '../../../app/styles/breakpoints' as bp;
+
 .card {
   overflow: hidden;
   background: var(--color-cream);
@@ -20,7 +22,7 @@
 }
 
 .name {
-  line-height: 1.1;
+  line-height: var(--line-height-tight);
   color: var(--color-black);
 }
 
@@ -31,13 +33,13 @@
 .rating {
   display: none; /* hidden on mobile */
   margin-top: 0.35rem;
-  font-size: 1.55rem; /* custom — decorative star glyphs, no matching token */
+  font-size: var(--font-size-star);
   line-height: 1;
   color: var(--color-gold);
   letter-spacing: 0.08em;
 }
 
-@media (min-width: 768px) {
+@media (min-width: bp.$md) {
   .rating {
     display: block;
   }

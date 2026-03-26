@@ -50,23 +50,16 @@ export function Header() {
       {/* Icons (right — shown on both desktop and mobile) */}
       <div className={styles.icons}>
         <button type="button" className={styles.iconBtn} aria-label="Search">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <circle cx="9" cy="9" r="6.5" stroke="currentColor" strokeWidth="1.5" />
-            <path d="M14 14l3.5 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/assets/icons/search.svg" alt="" aria-hidden="true" width={20} height={20} />
         </button>
         <button type="button" className={styles.iconBtn} aria-label="Account">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <circle cx="10" cy="7" r="3.5" stroke="currentColor" strokeWidth="1.5" />
-            <path d="M3 17c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/assets/icons/user.svg" alt="" aria-hidden="true" width={20} height={20} />
         </button>
         <button type="button" className={styles.iconBtn} aria-label="Cart">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <path d="M2 2h2l2.4 9.6a2 2 0 001.94 1.4h6.32a2 2 0 001.94-1.55L17.5 6H5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            <circle cx="8" cy="17" r="1" fill="currentColor" />
-            <circle cx="15" cy="17" r="1" fill="currentColor" />
-          </svg>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/assets/icons/bag.svg" alt="" aria-hidden="true" width={20} height={20} />
         </button>
       </div>
     </header>

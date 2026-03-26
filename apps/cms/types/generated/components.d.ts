@@ -7,10 +7,6 @@ export interface SectionsAbout extends Struct.ComponentSchema {
   };
   attributes: {
     description: Schema.Attribute.Blocks;
-    image: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
     title: Schema.Attribute.String;
   };
 }

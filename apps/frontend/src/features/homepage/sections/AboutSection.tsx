@@ -3,15 +3,12 @@
  * Extend `renderBlocks` if you add headings or links in the CMS rich text.
  */
 
-import Image from 'next/image';
-
 import { SectionWrapper } from '@/components/layout/SectionWrapper/SectionWrapper';
 import type {
   SectionsAbout,
   StrapiBlock,
   StrapiBlockChild,
 } from '@/features/homepage/model/homepage.types';
-import { strapiImageSrc } from '@/lib/strapi-media';
 
 import styles from './AboutSection.module.scss';
 
@@ -34,7 +31,7 @@ function renderBlocks(blocks: StrapiBlock[] | null | undefined) {
       const text = collectText(block.children);
       if (!text.trim()) return null;
       return (
-        <p key={i} className={styles.para}>
+        <p key={i} className={`${styles.para} body`}>
           {text}
         </p>
       );
@@ -44,30 +41,39 @@ function renderBlocks(blocks: StrapiBlock[] | null | undefined) {
 }
 
 export function AboutSection(props: SectionsAbout) {
-  const { title, description, image } = props;
-  const src = strapiImageSrc(image);
+  const { title, description } = props;
 
   return (
     <div className={styles.wrapper}>
-    <SectionWrapper title={title} titleId="about-heading">
-      <div className={styles.layout}>
-        <div className={styles.copy}>
-          <div className={styles.body}>{renderBlocks(description)}</div>
-        </div>
-        {src ? (
-          <div className={styles.media}>
-            <Image
-              src={src}
-              alt=""
-              width={480}
-              height={360}
-              className={styles.mediaImg}
-              sizes="(max-width: 768px) 100vw, 40vw"
+      <SectionWrapper title={title} titleId="about-heading" className={styles.section}>
+        <div className={styles.layout}>
+          <div className={styles.copy}>
+            <div className={styles.body}>{renderBlocks(description)}</div>
+            <div className={styles.storeButtons}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/icons/store-appstore.svg"
+                alt="Download on the App Store"
+                className={styles.storeBtn}
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/icons/store-googleplay.svg"
+                alt="Get it on Google Play"
+                className={styles.storeBtn}
+              />
+            </div>
+          </div>
+          <div className={styles.logoWrap}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/icons/about-logo.svg"
+              alt="Epicure"
+              className={styles.logo}
             />
           </div>
-        ) : null}
-      </div>
-    </SectionWrapper>
+        </div>
+      </SectionWrapper>
     </div>
   );
 }

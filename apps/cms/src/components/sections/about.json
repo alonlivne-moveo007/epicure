@@ -10,16 +10,6 @@
     },
     "description": {
       "type": "blocks"
-    },
-    "image": {
-      "type": "media",
-      "multiple": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
     }
   },
   "config": {}

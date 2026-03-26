@@ -97,12 +97,11 @@ export type SectionsChef = SectionBase & {
   chef?: StrapiChef | null;
 };
 
-/** `sections.about` — `description` is Strapi blocks; `image` may be multiple in the schema. */
+/** `sections.about` — `description` is Strapi blocks. */
 export type SectionsAbout = SectionBase & {
   __component: 'sections.about';
   title?: string | null;
   description?: StrapiBlock[] | null;
-  image?: unknown;
 };
 
 /** Discriminated union on `__component` for the homepage dynamic zone renderer. */

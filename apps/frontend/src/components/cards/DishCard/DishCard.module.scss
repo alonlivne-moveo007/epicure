@@ -1,5 +1,7 @@
 /* Matches Figma "Size=Big" (desktop) and "Property 1=Small" (mobile) specs. */
 
+@use '../../../app/styles/breakpoints' as bp;
+
 .card {
   overflow: hidden;
   background: var(--color-cream);
@@ -14,7 +16,7 @@
   aspect-ratio: 8 / 5;
   flex-shrink: 0;
 
-  @media (min-width: 768px) {
+  @media (min-width: bp.$md) {
     aspect-ratio: 5 / 4;
   }
 }
@@ -34,7 +36,7 @@
 .name {
   color: var(--color-black);
 
-  @media (min-width: 768px) {
+  @media (min-width: bp.$md) {
     text-align: center;
   }
 }
@@ -42,7 +44,7 @@
 .desc {
   margin-top: 0.5rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: bp.$md) {
     text-align: center;
   }
 }
@@ -71,11 +73,11 @@
 .priceLine {
   display: none;
 
-  @media (min-width: 768px) {
+  @media (min-width: bp.$md) {
     display: block;
     flex: 1;
     height: 0.5px;
-    background: var(--color-gray); /* #979797 — matches Figma line stroke */
+    background: var(--color-gray); /* matches Figma line stroke */
   }
 }
 
@@ -92,7 +94,7 @@
   width: 10px;
   height: auto;
 
-  @media (min-width: 768px) {
+  @media (min-width: bp.$md) {
     width: 14px;
   }
 }

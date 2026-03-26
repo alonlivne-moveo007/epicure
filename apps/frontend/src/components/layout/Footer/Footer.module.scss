@@ -1,3 +1,6 @@
+@use '../../../app/styles/breakpoints' as bp;
+@use '../../../app/styles/mixins' as mx;
+
 .footer {
   background: var(--color-white);
   border-top: 1px solid var(--color-gray);
@@ -5,15 +8,13 @@
 }
 
 .list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  @include mx.list-reset;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: var(--spacing-sm);
 
-  @media (min-width: 1024px) {
+  @media (min-width: bp.$lg) {
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -21,10 +22,5 @@
 }
 
 .link {
-  color: var(--color-black);
-  cursor: pointer;
-
-  &:hover {
-    color: var(--color-gray);
-  }
+  @include mx.interactive-link;
 }

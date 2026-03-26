@@ -27,6 +27,7 @@
   --font-size-button: 1rem;    /* 16px */
   --font-size-input: 1rem;     /* 16px */
   --font-size-label: 0.875rem; /* 14px */
+  --font-size-star: 1.55rem;   /* decorative star glyphs — RestaurantCard rating */
 
   // Font sizes — mobile (source: "03 MOBILE TYPOGRAPHY" page)
   --font-size-h1-mobile: 1.5rem;    /* 24px */
@@ -34,6 +35,12 @@
   --font-size-h3-mobile: 1.125rem;  /* 18px */
   --font-size-body-mobile: 1rem;    /* 16px */
   // button, input, label are identical on mobile and desktop
+
+  // Line heights
+  --line-height-base: 1.5;     /* html/body default */
+  --line-height-tight: 1.1;    /* condensed headings, card names */
+  --line-height-snug: 1.2;     /* hero titles */
+  --line-height-relaxed: 1.6;  /* long-form body copy */
 
   // Layout — Desktop (source: "01 GRID" + "02 LAYOUT" pages)
   --container-max-width: 1440px;

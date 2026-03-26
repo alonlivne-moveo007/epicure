@@ -1,3 +1,6 @@
+@use '../../../app/styles/breakpoints' as bp;
+@use '../../../app/styles/mixins' as mx;
+
 .header {
   position: fixed;
   top: 0;
@@ -9,10 +12,10 @@
   height: var(--nav-height-mobile);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 0 var(--container-padding-mobile);
 
-  @media (min-width: 1024px) {
+  @media (min-width: bp.$lg) {
     height: var(--nav-height-desktop);
     padding: 0 var(--container-padding-desktop);
   }
@@ -28,7 +31,7 @@
   color: var(--color-black);
   padding: 0;
 
-  @media (min-width: 1024px) {
+  @media (min-width: bp.$lg) {
     display: none;
   }
 }
@@ -37,7 +40,7 @@
   display: flex;
   align-items: center;
 
-  @media (min-width: 1024px) {
+  @media (min-width: bp.$lg) {
     display: none;
   }
 }
@@ -46,7 +49,7 @@
 .logoDesktop {
   display: none;
 
-  @media (min-width: 1024px) {
+  @media (min-width: bp.$lg) {
     display: flex;
     align-items: center;
   }
@@ -55,20 +58,16 @@
 .nav {
   display: none;
 
-  @media (min-width: 1024px) {
+  @media (min-width: bp.$lg) {
     display: flex;
     align-items: center;
     gap: 2rem;
+    margin-left: 2.5rem; /* sits right after the logo */
   }
 }
 
 .navLink {
-  color: var(--color-black);
-  cursor: pointer;
-
-  &:hover {
-    color: var(--color-gray);
-  }
+  @include mx.interactive-link;
 }
 
 // ─── Icon group (both breakpoints) ───────────────────────────────────────────
@@ -76,6 +75,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin-left: auto; /* pushes icons to the far right */
 }
 
 .iconBtn {
@@ -83,11 +83,6 @@
   align-items: center;
   background: none;
   border: none;
-  cursor: pointer;
-  color: var(--color-black);
   padding: 0;
-
-  &:hover {
-    color: var(--color-gray);
-  }
+  @include mx.interactive-link;
 }

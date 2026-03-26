@@ -1,6 +1,8 @@
 /* `ChefSection` — chef card (image + name overlay) with bio beside it on desktop,
    and a restaurants carousel below. */
 
+@use '../../../app/styles/breakpoints' as bp;
+
 /* profileSection uses full container width — no max-width override needed here. */
 .restaurantsSection {
   max-width: 1000px;
@@ -12,7 +14,7 @@
   flex-direction: column;
   gap: 1.5rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: bp.$md) {
     flex-direction: row;
     align-items: flex-start;
     gap: 4rem; /* 64px — Figma gap between card edge and bio start */
@@ -22,13 +24,13 @@
 .cardWrap {
   flex-shrink: 0;
 
-  @media (min-width: 768px) {
+  @media (min-width: bp.$md) {
     width: min(40%, 433px); /* 40% of container, capped at Figma card width */
   }
 }
 
 .bio {
-  @media (min-width: 768px) {
+  @media (min-width: bp.$md) {
     flex: 1;
     min-width: 0;
   }

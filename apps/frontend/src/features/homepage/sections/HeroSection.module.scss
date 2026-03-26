@@ -1,5 +1,7 @@
 // Styles for `HeroSection.tsx` — full-bleed hero, optional background image + scrim, fallback gradient.
 
+@use '../../../app/styles/breakpoints' as bp;
+
 .hero {
   position: relative;
   min-height: clamp(220px, 45vw, 420px);
@@ -9,7 +11,7 @@
   color: var(--color-white);
   overflow: hidden;
 
-  @media (min-width: 1024px) {
+  @media (min-width: bp.$lg) {
     padding: 2rem var(--container-padding-desktop);
   }
 }
@@ -50,7 +52,7 @@
 }
 
 .title {
-  line-height: 1.2;
+  line-height: var(--line-height-snug);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
 }
 
@@ -68,7 +70,7 @@
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.92);
   color: var(--color-black);
-  font-size: 0.95rem;
+  font-size: var(--font-size-input);
 }
 
 .visuallyHidden {

@@ -1,5 +1,7 @@
 // `AboutSection` — two-column about block (copy + optional image) from Strapi.
 
+@use '../../../app/styles/breakpoints' as bp;
+
 .wrapper {
   background: var(--color-gray-light);
   width: 100%;
@@ -10,42 +12,52 @@
   flex-direction: column;
   gap: 1.5rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: bp.$md) {
     flex-direction: row;
     align-items: flex-start;
     gap: 2.5rem;
   }
 }
 
+.section h2 {
+  text-align: left;
+}
+
 .copy {
-  flex: 1;
+  flex: 2;
   min-width: 0;
 }
 
 .body {
-  color: var(--color-gray);
-  line-height: 1.6;
+  line-height: var(--line-height-relaxed);
 }
 
-.para {
-  margin: 0 0 0.75rem;
+.storeButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+}
 
-  &:last-child {
-    margin-bottom: 0;
+.storeBtn {
+  width: 180px;
+  height: auto;
+  display: block;
+}
+
+.logoWrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: bp.$md) {
+    justify-content: flex-end;
   }
 }
 
-.media {
-  flex-shrink: 0;
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--color-cream);
-  max-width: 100%;
-}
-
-.mediaImg {
-  display: block;
-  width: 100%;
+.logo {
+  width: 179px;
   height: auto;
-  object-fit: cover;
+  display: block;
 }
