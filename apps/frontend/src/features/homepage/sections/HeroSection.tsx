@@ -44,7 +44,9 @@ export function HeroSection(props: SectionsHero) {
             <p className={styles.searchLabel}>
               <span className={styles.visuallyHidden}>Search</span>
               <span className={styles.searchFakeInput} aria-hidden>
-                {searchPlaceholder}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/assets/icons/search.svg" alt="" aria-hidden="true" className={styles.searchIcon} />
+                <span className="input-text">{searchPlaceholder}</span>
               </span>
             </p>
           ) : null}

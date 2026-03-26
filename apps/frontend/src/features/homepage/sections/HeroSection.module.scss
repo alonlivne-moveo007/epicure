@@ -6,9 +6,9 @@
   position: relative;
   min-height: clamp(220px, 45vw, 420px);
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
   padding: 2rem var(--container-padding-mobile);
-  color: var(--color-white);
   overflow: hidden;
 
   @media (min-width: bp.$lg) {
@@ -26,51 +26,55 @@
 }
 
 .scrim {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.55) 0%,
-    rgba(0, 0, 0, 0.2) 50%,
-    transparent 100%
-  );
-  pointer-events: none;
+  display: none;
 }
 
 .inner {
-  max-width: 42rem;
-}
-
-.innerWrap {
   position: relative;
   z-index: 1;
   width: 100%;
-  margin: 0 auto;
-  max-width: var(--container-max-width);
+  max-width: 480px;
+  background: color-mix(in srgb, var(--color-white) 80%, transparent); /* same as ChefCard overlay */
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.innerWrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
   padding: 0;
 }
 
 .title {
   line-height: var(--line-height-snug);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
-}
-
-.heroFallback .title {
-  text-shadow: none;
+  color: var(--color-black);
 }
 
 .searchLabel {
   margin-top: 1rem;
+  width: 100%;
 }
 
 .searchFakeInput {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
   padding: 0.65rem 1rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.92);
+  border-radius: 4px;
+  background: transparent;
   color: var(--color-black);
-  font-size: var(--font-size-input);
+  border: 0.5px solid var(--color-black);
+}
+
+.searchIcon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
 }
 
 .visuallyHidden {
