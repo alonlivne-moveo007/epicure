@@ -27,6 +27,12 @@ const nextConfig = {
         port: '1337',
         pathname: '/uploads/**',
       },
+      // Design System page placeholder images (dev only)
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+        pathname: '/**',
+      },
     ],
   },
 };

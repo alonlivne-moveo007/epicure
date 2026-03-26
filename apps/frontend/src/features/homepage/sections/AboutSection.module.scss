@@ -1,7 +1,8 @@
 // `AboutSection` — two-column about block (copy + optional image) from Strapi.
 
-.section {
-  background: var(--color-white);
+.wrapper {
+  background: var(--color-gray-light);
+  width: 100%;
 }
 
 .layout {

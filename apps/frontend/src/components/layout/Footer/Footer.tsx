@@ -8,7 +8,7 @@ export function Footer() {
       <ul className={styles.list}>
         {FOOTER_LINKS.map((label) => (
           <li key={label}>
-            <span className={styles.link}>{label}</span>
+            <span className={`${styles.link} button-text`}>{label}</span>
           </li>
         ))}
       </ul>

@@ -32,25 +32,17 @@
 
 /* Mobile name: left-aligned (x≈19 in 245px SVG). Desktop: centered (x≈128 in 380px SVG). */
 .name {
-  font-size: 1.125rem; /* 18px — mobile H3 */
-  font-weight: var(--font-weight-regular);
   color: var(--color-black);
 
   @media (min-width: 768px) {
-    font-size: var(--font-size-h3); /* 40px — desktop H3 */
     text-align: center;
   }
 }
 
 .desc {
   margin-top: 0.5rem;
-  font-size: var(--font-size-button); /* 16px — mobile body */
-  color: var(--color-gray);
-  font-weight: var(--font-weight-thin);
-  line-height: 1.45;
 
   @media (min-width: 768px) {
-    font-size: var(--font-size-body); /* 24px — desktop body */
     text-align: center;
   }
 }
@@ -92,13 +84,7 @@
   align-items: center;
   gap: 0.3rem;
   flex-shrink: 0;
-  font-size: var(--font-size-button); /* 16px mobile */
-  font-weight: var(--font-weight-thin);
   color: var(--color-black);
-
-  @media (min-width: 768px) {
-    font-size: var(--font-size-body); /* 24px desktop */
-  }
 }
 
 /* ILS icon: smaller on mobile (8px from Figma), larger on desktop (14px). */

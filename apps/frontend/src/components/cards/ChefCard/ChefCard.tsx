@@ -18,7 +18,7 @@ export function ChefCard({ imageUrl, name }: ChefCardProps) {
         sizes="(max-width: 768px) 90vw, 433px"
       />
       <div className={styles.overlay}>
-        <p className={styles.name}>{name}</p>
+        <p className={`${styles.name} body`}>{name}</p>
       </div>
     </article>
   );

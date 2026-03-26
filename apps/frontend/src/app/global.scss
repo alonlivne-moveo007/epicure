@@ -19,7 +19,7 @@
   --font-weight-thin: 100;
   --font-weight-regular: 400;
 
-  // Font sizes (source: "03 DESKTOP/MOBILE TYPOGRAPHY" pages)
+  // Font sizes — desktop (source: "03 DESKTOP TYPOGRAPHY" page)
   --font-size-h1: 2rem;        /* 32px */
   --font-size-h2: 1.875rem;    /* 30px */
   --font-size-h3: 2.5rem;      /* 40px */
@@ -27,6 +27,13 @@
   --font-size-button: 1rem;    /* 16px */
   --font-size-input: 1rem;     /* 16px */
   --font-size-label: 0.875rem; /* 14px */
+
+  // Font sizes — mobile (source: "03 MOBILE TYPOGRAPHY" page)
+  --font-size-h1-mobile: 1.5rem;    /* 24px */
+  --font-size-h2-mobile: 1rem;      /* 16px */
+  --font-size-h3-mobile: 1.125rem;  /* 18px */
+  --font-size-body-mobile: 1rem;    /* 16px */
+  // button, input, label are identical on mobile and desktop
 
   // Layout — Desktop (source: "01 GRID" + "02 LAYOUT" pages)
   --container-max-width: 1440px;
@@ -58,7 +65,7 @@ body {
   font-family: inherit;
   line-height: inherit;
   margin: 0;
-  background-color: var(--color-white-off);
+  background-color: var(--color-white);
   color: var(--color-black);
 }
 
@@ -107,4 +114,75 @@ svg {
 img {
   max-width: 100%;
   display: block;
+}
+
+// ─── Typography Classes ───────────────────────────────────────────────────────
+// Single source of truth for all font-size and font-weight across the app.
+// Components must NOT redeclare font-size or font-weight — use these classes only.
+
+.h1 {
+  font-size: var(--font-size-h1-mobile);
+  font-weight: var(--font-weight-thin);
+
+  @media (min-width: 768px) {
+    font-size: var(--font-size-h1);
+  }
+}
+
+.h2 {
+  font-size: var(--font-size-h2-mobile);
+  font-weight: var(--font-weight-thin);
+
+  @media (min-width: 768px) {
+    font-size: var(--font-size-h2);
+  }
+}
+
+.h3 {
+  font-size: var(--font-size-h3-mobile);
+  font-weight: var(--font-weight-regular);
+
+  @media (min-width: 768px) {
+    font-size: var(--font-size-h3);
+  }
+}
+
+.body {
+  font-size: var(--font-size-body-mobile);
+  font-weight: var(--font-weight-thin);
+
+  @media (min-width: 768px) {
+    font-size: var(--font-size-body);
+  }
+}
+
+.button-text {
+  font-size: var(--font-size-button);
+  font-weight: var(--font-weight-thin);
+}
+
+.input-text {
+  font-size: var(--font-size-input);
+  font-weight: var(--font-weight-thin);
+}
+
+.label {
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-thin);
+}
+
+// ─── Semantic HTML Mappings ───────────────────────────────────────────────────
+// h1/h2/h3 elements automatically inherit the correct typography class.
+// No className needed in JSX for heading elements.
+
+h1 {
+  @extend .h1;
+}
+
+h2 {
+  @extend .h2;
+}
+
+h3 {
+  @extend .h3;
 }

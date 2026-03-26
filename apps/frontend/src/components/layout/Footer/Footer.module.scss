@@ -1,5 +1,5 @@
 .footer {
-  background: var(--color-white-off);
+  background: var(--color-white);
   border-top: 1px solid var(--color-gray);
   padding: var(--spacing-lg) var(--container-padding-mobile);
 }
@@ -21,9 +21,6 @@
 }
 
 .link {
-  font-family: var(--font-family);
-  font-weight: var(--font-weight-thin);
-  font-size: var(--font-size-button);
   color: var(--color-black);
   cursor: pointer;
 

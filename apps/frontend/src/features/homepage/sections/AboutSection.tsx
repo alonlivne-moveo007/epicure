@@ -48,7 +48,8 @@ export function AboutSection(props: SectionsAbout) {
   const src = strapiImageSrc(image);
 
   return (
-    <SectionWrapper title={title} titleId="about-heading" className={styles.section}>
+    <div className={styles.wrapper}>
+    <SectionWrapper title={title} titleId="about-heading">
       <div className={styles.layout}>
         <div className={styles.copy}>
           <div className={styles.body}>{renderBlocks(description)}</div>
@@ -67,5 +68,6 @@ export function AboutSection(props: SectionsAbout) {
         ) : null}
       </div>
     </SectionWrapper>
+    </div>
   );
 }

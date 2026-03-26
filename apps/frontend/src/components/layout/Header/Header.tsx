@@ -41,7 +41,7 @@ export function Header() {
       {/* Desktop: navigation links (center) */}
       <nav className={styles.nav} aria-label="Main navigation">
         {NAV_LINKS.map((link) => (
-          <span key={link} className={styles.navLink}>
+          <span key={link} className={`${styles.navLink} button-text`}>
             {link}
           </span>
         ))}

@@ -41,7 +41,7 @@ export function DishCard({ imageUrl, name, description, price, tags }: DishCardP
 
       <div className={styles.body}>
         {name ? <h3 className={styles.name}>{name}</h3> : null}
-        {description ? <p className={styles.desc}>{description}</p> : null}
+        {description ? <p className={`${styles.desc} body`}>{description}</p> : null}
 
         {visibleTags.length > 0 ? (
           <div className={styles.tagRow}>
@@ -54,7 +54,7 @@ export function DishCard({ imageUrl, name, description, price, tags }: DishCardP
         {price != null ? (
           <div className={styles.priceRow}>
             <span className={styles.priceLine} aria-hidden="true" />
-            <span className={styles.priceAmount}>
+            <span className={`${styles.priceAmount} body`}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/assets/icons/ils.svg"

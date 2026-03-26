@@ -42,7 +42,7 @@ export function ChefSection(props: SectionsChef) {
               <ChefCard imageUrl={src} name={chef.name ?? ''} />
             </div>
           ) : null}
-          {chef.bio ? <p className={styles.bio}>{chef.bio}</p> : null}
+          {chef.bio ? <p className={`${styles.bio} body`}>{chef.bio}</p> : null}
         </div>
       </SectionWrapper>
 

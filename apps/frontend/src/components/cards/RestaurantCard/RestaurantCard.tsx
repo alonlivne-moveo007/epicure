@@ -37,7 +37,7 @@ export function RestaurantCard(props: RestaurantCardProps) {
       ) : null}
       <div className={styles.body}>
         <h3 className={styles.name}>{name}</h3>
-        {subtitle ? <p className={styles.subtitle}>{subtitle}</p> : null}
+        {subtitle ? <p className={`${styles.subtitle} body`}>{subtitle}</p> : null}
         {rating != null ? (
           <p className={styles.rating} aria-label={`Rating ${rating} out of 5`}>
             {renderStars(rating)}

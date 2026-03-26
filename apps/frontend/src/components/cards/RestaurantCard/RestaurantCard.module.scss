@@ -20,37 +20,24 @@
 }
 
 .name {
-  font-size: 1.125rem; /* 18px — mobile H3 */
   line-height: 1.1;
-  font-weight: var(--font-weight-regular);
   color: var(--color-black);
 }
 
 .subtitle {
   margin-top: 0.2rem;
-  font-size: var(--font-size-button); /* 16px — mobile body */
-  color: var(--color-gray);
-  font-weight: var(--font-weight-thin);
 }
 
 .rating {
   display: none; /* hidden on mobile */
   margin-top: 0.35rem;
-  font-size: 1.55rem;
+  font-size: 1.55rem; /* custom — decorative star glyphs, no matching token */
   line-height: 1;
   color: var(--color-gold);
   letter-spacing: 0.08em;
 }
 
 @media (min-width: 768px) {
-  .name {
-    font-size: var(--font-size-h3); /* 40px — desktop H3 */
-  }
-
-  .subtitle {
-    font-size: var(--font-size-body); /* 24px — desktop body */
-  }
-
   .rating {
     display: block;
   }
