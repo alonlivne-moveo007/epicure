@@ -11,6 +11,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { RestaurantService } from '../services/restaurant.service';
 
@@ -19,8 +20,10 @@ export class RestaurantController {
   constructor(private readonly restaurantService: RestaurantService) {}
 
   @Get()
-  async list(): Promise<ApiResponse<unknown>> {
-    const data = await this.restaurantService.listRestaurants();
+  async list(@Query('chefId') chefId?: string): Promise<ApiResponse<unknown>> {
+    const data = chefId
+      ? await this.restaurantService.listByChef(chefId)
+      : await this.restaurantService.listRestaurants();
     return { data };
   }
 

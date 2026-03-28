@@ -3,6 +3,9 @@
  * the populated Strapi relation (name, rating, description, image).
  */
 
+import Image from 'next/image';
+import Link from 'next/link';
+
 import { RestaurantCard } from '@/components/cards/RestaurantCard/RestaurantCard';
 import { Carousel } from '@/components/carousel/Carousel.client';
 import { SectionWrapper } from '@/components/layout/SectionWrapper/SectionWrapper';
@@ -32,6 +35,12 @@ export function RestaurantsSection(props: SectionsRestaurants) {
           );
         })}
       </Carousel>
+      <div className={styles.allRestaurantsRow}>
+        <Link href="/restaurants" className={styles.allRestaurantsLink}>
+          All Restaurants
+          <Image src="/assets/icons/arrow.svg" alt="" width={24} height={24} aria-hidden />
+        </Link>
+      </div>
     </SectionWrapper>
   );
 }

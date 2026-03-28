@@ -28,7 +28,7 @@ function UnknownSection(props: { uid: string }) {
 
 /** Renders one dynamic-zone block; `key` uses Strapi component `id` when present. */
 export function renderSection(section: HomepageSection, index: number) {
-  const key = section.id ?? index;
+  const key = `${section.__component}-${section.id ?? index}`;
 
   switch (section.__component) {
     case 'sections.hero':

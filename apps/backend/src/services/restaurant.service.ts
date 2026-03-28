@@ -15,6 +15,13 @@ export class RestaurantService {
     return this.strapiHttp.get<unknown>('/restaurants', POPULATE);
   }
 
+  async listByChef(chefId: string): Promise<unknown> {
+    return this.strapiHttp.get<unknown>('/restaurants', {
+      ...POPULATE,
+      filters: { chef: { id: { $eq: chefId } } },
+    });
+  }
+
   async getRestaurant(id: string): Promise<unknown> {
     return this.strapiHttp.get<unknown>(`/restaurants/${id}`, POPULATE);
   }

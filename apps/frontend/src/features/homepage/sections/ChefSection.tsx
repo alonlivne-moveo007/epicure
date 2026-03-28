@@ -1,17 +1,15 @@
 /**
  * Renders `sections.chef`: featured chef card (image + name overlay) with bio below,
- * and a horizontal carousel of restaurants when Strapi returns them on the populated
- * `chef` relation.
+ * and a horizontal carousel of the chef's restaurants fetched via a separate BFF call.
+ * This is an async Server Component so it can fetch its own data without deep nested populate.
  */
 
 import { ChefCard } from '@/components/cards/ChefCard/ChefCard';
 import { RestaurantCard } from '@/components/cards/RestaurantCard/RestaurantCard';
 import { Carousel } from '@/components/carousel/Carousel.client';
 import { SectionWrapper } from '@/components/layout/SectionWrapper/SectionWrapper';
-import type {
-  SectionsChef,
-  StrapiRestaurant,
-} from '@/features/homepage/model/homepage.types';
+import { getRestaurantsByChef } from '@/features/restaurants/api/get-restaurants';
+import type { SectionsChef } from '@/features/homepage/model/homepage.types';
 import { strapiImageSrc } from '@/lib/strapi-media';
 
 import styles from './ChefSection.module.scss';
@@ -21,14 +19,12 @@ function possessiveRestaurantsTitle(chefName: string | null | undefined): string
   return `${name}'s restaurants`;
 }
 
-export function ChefSection(props: SectionsChef) {
+export async function ChefSection(props: SectionsChef) {
   const { title, chef } = props;
   if (!chef) return null;
 
   const src = strapiImageSrc(chef.image);
-  const restaurants = Array.isArray(chef.restaurants)
-    ? (chef.restaurants as StrapiRestaurant[])
-    : [];
+  const restaurants = chef.id ? await getRestaurantsByChef(chef.id) : [];
 
   const restaurantsTitle = possessiveRestaurantsTitle(chef.name);
   const carouselAriaLabel = `${chef.name ?? 'Chef'} restaurants`;

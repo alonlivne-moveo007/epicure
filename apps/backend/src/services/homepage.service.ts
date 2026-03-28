@@ -41,7 +41,7 @@ const DEFAULT_HOMEPAGE_QUERY: StrapiQueryParams = {
         },
         'sections.chef': {
           populate: {
-            chef: { populate: '*' },
+            chef: { populate: ['image'] },
           },
         },
         'sections.about': {
