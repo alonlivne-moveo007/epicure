@@ -19,12 +19,6 @@
   flex-direction: column;
 }
 
-@media (min-width: bp.$md) {
-  .slide {
-    flex-basis: min(38vw, 320px);
-  }
-}
-
 @media (min-width: bp.$xl) {
   .slide {
     flex-basis: min(30vw, 340px);

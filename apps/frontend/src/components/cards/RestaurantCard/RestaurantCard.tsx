@@ -7,6 +7,7 @@ export type RestaurantCardProps = {
   name?: string | null;
   subtitle?: string | null;
   rating?: number | null;
+  variant?: 'full' | 'mini';
 };
 
 function renderStars(rating?: number | null): string {
@@ -19,10 +20,11 @@ function renderStars(rating?: number | null): string {
  * Presentational restaurant card used by homepage sections and future restaurant pages.
  */
 export function RestaurantCard(props: RestaurantCardProps) {
-  const { imageUrl, name, subtitle, rating } = props;
+  const { imageUrl, name, subtitle, rating, variant } = props;
+  const isMini = variant === 'mini';
 
   return (
-    <article className={styles.card}>
+    <article className={`${styles.card} ${isMini ? styles.cardMini : ''}`}>
       {imageUrl ? (
         <div className={styles.thumb}>
           <Image
@@ -37,8 +39,8 @@ export function RestaurantCard(props: RestaurantCardProps) {
       ) : null}
       <div className={styles.body}>
         <h3 className={styles.name}>{name}</h3>
-        {subtitle ? <p className={`${styles.subtitle} body`}>{subtitle}</p> : null}
-        {rating != null ? (
+        {!isMini && subtitle ? <p className={`${styles.subtitle} body`}>{subtitle}</p> : null}
+        {!isMini && rating != null ? (
           <p className={styles.rating} aria-label={`Rating ${rating} out of 5`}>
             {renderStars(rating)}
           </p>

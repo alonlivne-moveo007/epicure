@@ -3,18 +3,13 @@
 
 @use '../../../app/styles/breakpoints' as bp;
 
-/* profileSection uses full container width — no max-width override needed here. */
-.restaurantsSection {
-  max-width: 1000px;
-}
-
 /* Mobile: card above bio. Desktop: card LEFT (~40%), bio RIGHT, 64px gap (matches Figma). */
 .body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 
-  @media (min-width: bp.$md) {
+  @media (min-width: bp.$lg) {
     flex-direction: row;
     align-items: flex-start;
     gap: 4rem; /* 64px — Figma gap between card edge and bio start */
@@ -24,13 +19,13 @@
 .cardWrap {
   flex-shrink: 0;
 
-  @media (min-width: bp.$md) {
+  @media (min-width: bp.$lg) {
     width: min(40%, 433px); /* 40% of container, capped at Figma card width */
   }
 }
 
 .bio {
-  @media (min-width: bp.$md) {
+  @media (min-width: bp.$lg) {
     flex: 1;
     min-width: 0;
   }
@@ -38,4 +33,24 @@
 
 .cardItem {
   min-width: 0;
+}
+
+.restaurantsBlock {
+  margin-top: 2rem;
+}
+
+.restaurantsTitle {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+/* 60% of full-card slide: mobile min(50vw, 204px), desktop min(18vw, 204px) */
+.miniSlide {
+  flex-basis: min(50vw, 204px);
+}
+
+@media (min-width: bp.$xl) {
+  .miniSlide {
+    flex-basis: min(18vw, 204px);
+  }
 }

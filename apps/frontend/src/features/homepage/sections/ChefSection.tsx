@@ -34,38 +34,34 @@ export function ChefSection(props: SectionsChef) {
   const carouselAriaLabel = `${chef.name ?? 'Chef'} restaurants`;
 
   return (
-    <>
-      <SectionWrapper title={title} titleId="chef-heading" className={styles.profileSection}>
-        <div className={styles.body}>
-          {src ? (
-            <div className={styles.cardWrap}>
-              <ChefCard imageUrl={src} name={chef.name ?? ''} />
-            </div>
-          ) : null}
-          {chef.bio ? <p className={`${styles.bio} body`}>{chef.bio}</p> : null}
-        </div>
-      </SectionWrapper>
+    <SectionWrapper title={title} titleId="chef-heading">
+      <div className={styles.body}>
+        {src ? (
+          <div className={styles.cardWrap}>
+            <ChefCard imageUrl={src} name={chef.name ?? ''} />
+          </div>
+        ) : null}
+        {chef.bio ? <p className={`${styles.bio} body`}>{chef.bio}</p> : null}
+      </div>
 
       {restaurants.length > 0 ? (
-        <SectionWrapper
-          title={restaurantsTitle}
-          titleId="chef-restaurants-heading"
-          className={styles.restaurantsSection}
-        >
-          <Carousel ariaLabel={carouselAriaLabel}>
+        <div className={styles.restaurantsBlock}>
+          <h2 id="chef-restaurants-heading" className={styles.restaurantsTitle}>
+            {restaurantsTitle}
+          </h2>
+          <Carousel ariaLabel={carouselAriaLabel} slideClassName={styles.miniSlide}>
             {restaurants.map((r) => (
               <div key={r.id ?? r.name} className={styles.cardItem}>
                 <RestaurantCard
+                  variant="mini"
                   imageUrl={strapiImageSrc(r.image)}
                   name={r.name}
-                  subtitle={r.chef?.name ?? null}
-                  rating={r.rating}
                 />
               </div>
             ))}
           </Carousel>
-        </SectionWrapper>
+        </div>
       ) : null}
-    </>
+    </SectionWrapper>
   );
 }

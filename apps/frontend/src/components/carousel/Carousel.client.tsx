@@ -9,9 +9,11 @@ export type CarouselProps = {
   children: ReactNode;
   ariaLabel?: string;
   className?: string;
+  /** Extra class applied to every slide — use for per-instance slide width overrides. */
+  slideClassName?: string;
 };
 
-export function Carousel({ children, ariaLabel, className }: CarouselProps) {
+export function Carousel({ children, ariaLabel, className, slideClassName }: CarouselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ align: 'start' });
   const slides = Children.toArray(children);
 
@@ -32,7 +34,12 @@ export function Carousel({ children, ariaLabel, className }: CarouselProps) {
     >
       <div className={styles.track}>
         {slides.map((child, i) => (
-          <div key={i} className={styles.slide} role="group" aria-roledescription="slide">
+          <div
+            key={i}
+            className={[styles.slide, slideClassName].filter(Boolean).join(' ')}
+            role="group"
+            aria-roledescription="slide"
+          >
             {child}
           </div>
         ))}

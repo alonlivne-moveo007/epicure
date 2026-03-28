@@ -39,8 +39,26 @@
   letter-spacing: 0.08em;
 }
 
-@media (min-width: bp.$md) {
+@media (min-width: bp.$lg) {
   .rating {
     display: block;
+  }
+}
+
+.cardMini {
+  max-width: 204px;
+
+  .body {
+    padding: 0.5rem 0.5rem 0.75rem;
+    text-align: center;
+  }
+
+  /* Scale name font to 60% of the full h3: 1rem mobile, 1.5rem desktop */
+  .name {
+    font-size: var(--font-size-button); /* 1rem — readable floor for small card */
+
+    @media (min-width: 1024px) {
+      font-size: 1.5rem; /* 60% of --font-size-h3 (2.5rem) */
+    }
   }
 }

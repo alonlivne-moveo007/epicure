@@ -16,7 +16,7 @@
   aspect-ratio: 8 / 5;
   flex-shrink: 0;
 
-  @media (min-width: bp.$md) {
+  @media (min-width: bp.$lg) {
     aspect-ratio: 5 / 4;
   }
 }
@@ -36,7 +36,7 @@
 .name {
   color: var(--color-black);
 
-  @media (min-width: bp.$md) {
+  @media (min-width: bp.$lg) {
     text-align: center;
   }
 }
@@ -44,7 +44,7 @@
 .desc {
   margin-top: 0.5rem;
 
-  @media (min-width: bp.$md) {
+  @media (min-width: bp.$lg) {
     text-align: center;
   }
 }
@@ -73,7 +73,7 @@
 .priceLine {
   display: none;
 
-  @media (min-width: bp.$md) {
+  @media (min-width: bp.$lg) {
     display: block;
     flex: 1;
     height: 0.5px;
@@ -94,7 +94,7 @@
   width: 10px;
   height: auto;
 
-  @media (min-width: bp.$md) {
+  @media (min-width: bp.$lg) {
     width: 14px;
   }
 }
