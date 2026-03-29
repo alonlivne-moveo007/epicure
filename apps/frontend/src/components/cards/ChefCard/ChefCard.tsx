@@ -15,7 +15,7 @@ export function ChefCard({ imageUrl, name }: ChefCardProps) {
         alt={name}
         fill
         className={styles.img}
-        sizes="(max-width: 768px) 90vw, 433px"
+        sizes="(max-width: 1023px) 335px, 433px"
       />
       <div className={styles.overlay}>
         <p className={`${styles.name} body`}>{name}</p>

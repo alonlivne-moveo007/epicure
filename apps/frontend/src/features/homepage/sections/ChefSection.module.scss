@@ -18,10 +18,6 @@
 
 .cardWrap {
   flex-shrink: 0;
-
-  @media (min-width: bp.$lg) {
-    width: min(40%, 433px); /* 40% of container, capped at Figma card width */
-  }
 }
 
 .bio {
