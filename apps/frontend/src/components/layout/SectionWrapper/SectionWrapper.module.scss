@@ -15,7 +15,11 @@
   text-transform: uppercase;
   color: var(--color-black);
   margin-bottom: 1.25rem;
-  text-align: center;
+  text-align: left;
+
+  @media (min-width: bp.$lg) {
+    text-align: center;
+  }
 }
 
 .content {

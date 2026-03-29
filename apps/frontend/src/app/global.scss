@@ -66,6 +66,7 @@ html {
   font-family: var(--font-family);
   line-height: 1.5;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -74,6 +75,7 @@ body {
   margin: 0;
   background-color: var(--color-white);
   color: var(--color-black);
+  overflow-x: hidden;
 }
 
 h1,
