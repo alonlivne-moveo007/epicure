@@ -37,8 +37,7 @@ export function RestaurantsSection(props: SectionsRestaurants) {
       </Carousel>
       <div className={styles.allRestaurantsRow}>
         <Link href="/restaurants" className={styles.allRestaurantsLink}>
-          All Restaurants
-          <Image src="/assets/icons/arrow.svg" alt="" width={24} height={24} aria-hidden />
+          <Image src="/assets/icons/all-restaurants.svg" alt="All Restaurants" width={226} height={35} />
         </Link>
       </div>
     </SectionWrapper>
