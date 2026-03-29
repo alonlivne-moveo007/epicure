@@ -34,7 +34,7 @@ export function DishCard({ imageUrl, name, description, price, tags }: DishCardP
             alt={name ?? 'Dish'}
             fill
             className={styles.img}
-            sizes="380px"
+            sizes="(max-width: 1023px) 245px, 380px"
           />
         </div>
       ) : null}

@@ -16,7 +16,7 @@ export function TagsSection(props: SectionsTags) {
 
   return (
     <div className={styles.wrapper}>
-    <SectionWrapper title={title} titleId="tags-heading">
+    <SectionWrapper title={title} titleId="tags-heading" headingClassName={styles.centeredHeading}>
       <ul className={styles.list}>
         {list.map((t) => {
           const src = strapiImageSrc(t.image);

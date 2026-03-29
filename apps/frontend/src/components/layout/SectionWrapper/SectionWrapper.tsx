@@ -9,13 +9,14 @@ export type SectionWrapperProps = {
   footer?: ReactNode;
   className?: string;
   contentClassName?: string;
+  headingClassName?: string;
 };
 
 /**
  * Shared section chrome for homepage blocks: spacing, max-width and consistent heading style.
  */
 export function SectionWrapper(props: SectionWrapperProps) {
-  const { title, titleId, children, footer, className, contentClassName } = props;
+  const { title, titleId, children, footer, className, contentClassName, headingClassName } = props;
 
   return (
     <section
@@ -23,7 +24,7 @@ export function SectionWrapper(props: SectionWrapperProps) {
       aria-labelledby={title ? titleId : undefined}
     >
       {title ? (
-        <h2 id={titleId} className={styles.heading}>
+        <h2 id={titleId} className={[styles.heading, headingClassName].filter(Boolean).join(' ')}>
           {title}
         </h2>
       ) : null}

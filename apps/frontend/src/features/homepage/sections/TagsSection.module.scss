@@ -8,9 +8,15 @@
 .list {
   @include mx.list-reset;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   gap: 2rem;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 .tag {
@@ -22,5 +28,9 @@
 
 .tagName {
   color: var(--color-black);
+  text-align: center;
+}
+
+.centeredHeading {
   text-align: center;
 }

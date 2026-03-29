@@ -1,16 +1,30 @@
+@use '../../../app/styles/breakpoints' as bp;
+
+/* ─────────────────────────────────────────────────────────────
+   Mobile  : 245px wide, 245×152 image, left-aligned body, no price lines
+   Desktop : 380px wide, 380×306 image, center-aligned body, flanking price lines
+───────────────────────────────────────────────────────────── */
 .cardDish {
-  width: 380px;
-  height: 654px;
+  width: 245px;
   overflow: hidden;
   background: var(--color-cream);
   display: flex;
   flex-direction: column;
+
+  @media (min-width: bp.$lg) {
+    width: 380px;
+    height: 654px;
+  }
 }
 
 .thumb {
   position: relative;
   width: 100%;
-  height: 306px;
+  height: 152px;
+
+  @media (min-width: bp.$lg) {
+    height: 306px;
+  }
 }
 
 .img {
@@ -22,12 +36,21 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding-top: 24px;
-  padding-bottom: 8px;
-  gap: 8px;
+  align-items: flex-start;
+  text-align: left;
+  padding: 16px;
+  gap: 16px;
   background: var(--color-cream);
+
+  @media (min-width: bp.$lg) {
+    align-items: center;
+    text-align: center;
+    padding-top: 24px;
+    padding-bottom: 8px;
+    padding-left: 0;
+    padding-right: 0;
+    gap: 8px;
+  }
 }
 
 .name {
@@ -41,26 +64,37 @@
 .tagRow {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 0.5rem;
+  justify-content: flex-start;
+
+  @media (min-width: bp.$lg) {
+    justify-content: center;
+  }
 }
 
 /* ─── Price row ──────────────────────────────────────────────────────────── */
-/* ─── ILS {price} ─── (Figma: two #979797 lines, stroke 0.5px). */
 
 .priceRow {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   margin-top: auto;
-  padding-top: 1.25rem;
+
+  @media (min-width: bp.$lg) {
+    padding-top: 1.25rem;
+  }
 }
 
+/* Hidden on mobile, shown on desktop as flanking lines */
 .priceLine {
-  display: block;
-  flex: 1;
-  height: 0.5px;
-  background: var(--color-gray);
+  display: none;
+
+  @media (min-width: bp.$lg) {
+    display: block;
+    flex: 1;
+    height: 0.5px;
+    background: var(--color-gray);
+  }
 }
 
 .priceAmount {
