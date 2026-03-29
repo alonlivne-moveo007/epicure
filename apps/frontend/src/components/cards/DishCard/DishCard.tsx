@@ -26,7 +26,7 @@ export function DishCard({ imageUrl, name, description, price, tags }: DishCardP
   const visibleTags = tags?.filter((t) => t.name && t.iconSrc) ?? [];
 
   return (
-    <article className={styles.card}>
+    <article className={styles.cardDish}>
       {imageUrl ? (
         <div className={styles.thumb}>
           <Image
@@ -34,7 +34,7 @@ export function DishCard({ imageUrl, name, description, price, tags }: DishCardP
             alt={name ?? 'Dish'}
             fill
             className={styles.img}
-            sizes="(max-width: 768px) 84vw, 33vw"
+            sizes="380px"
           />
         </div>
       ) : null}

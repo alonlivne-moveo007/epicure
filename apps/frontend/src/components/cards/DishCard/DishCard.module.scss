@@ -1,52 +1,41 @@
-/* Matches Figma "Size=Big" (desktop) and "Property 1=Small" (mobile) specs. */
-
-@use '../../../app/styles/breakpoints' as bp;
-
-.card {
+.cardDish {
+  width: 380px;
+  height: 654px;
   overflow: hidden;
   background: var(--color-cream);
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 
-/* Mobile: 245×152 image → aspect ~8:5. Desktop: 380×306 → aspect ~5:4. */
 .thumb {
   position: relative;
-  aspect-ratio: 8 / 5;
-  flex-shrink: 0;
-
-  @media (min-width: bp.$lg) {
-    aspect-ratio: 5 / 4;
-  }
+  width: 100%;
+  height: 306px;
 }
 
 .img {
   object-fit: cover;
+  object-position: center;
 }
 
 .body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  align-items: center;
+  text-align: center;
+  padding-top: 24px;
+  padding-bottom: 8px;
+  gap: 8px;
+  background: var(--color-cream);
 }
 
-/* Mobile name: left-aligned (x≈19 in 245px SVG). Desktop: centered (x≈128 in 380px SVG). */
 .name {
   color: var(--color-black);
-
-  @media (min-width: bp.$lg) {
-    text-align: center;
-  }
 }
 
 .desc {
-  margin-top: 0.5rem;
-
-  @media (min-width: bp.$lg) {
-    text-align: center;
-  }
+  // gap on .body handles spacing
 }
 
 .tagRow {
@@ -54,12 +43,10 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: 0.75rem;
 }
 
 /* ─── Price row ──────────────────────────────────────────────────────────── */
-/* Mobile: ILS icon + amount, left-aligned, no lines.
-   Desktop: ─── ILS {price} ───  (Figma: two #979797 lines, stroke 0.5px). */
+/* ─── ILS {price} ─── (Figma: two #979797 lines, stroke 0.5px). */
 
 .priceRow {
   display: flex;
@@ -69,16 +56,11 @@
   padding-top: 1.25rem;
 }
 
-/* Hidden on mobile, flex: 1 line on desktop. */
 .priceLine {
-  display: none;
-
-  @media (min-width: bp.$lg) {
-    display: block;
-    flex: 1;
-    height: 0.5px;
-    background: var(--color-gray); /* matches Figma line stroke */
-  }
+  display: block;
+  flex: 1;
+  height: 0.5px;
+  background: var(--color-gray);
 }
 
 .priceAmount {
@@ -89,12 +71,7 @@
   color: var(--color-black);
 }
 
-/* ILS icon: smaller on mobile (8px from Figma), larger on desktop (14px). */
 .ilsIcon {
-  width: 10px;
+  width: 14px;
   height: auto;
-
-  @media (min-width: bp.$lg) {
-    width: 14px;
-  }
 }

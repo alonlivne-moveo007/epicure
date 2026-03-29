@@ -30,10 +30,9 @@ export function RestaurantCard(props: RestaurantCardProps) {
           <Image
             src={imageUrl}
             alt={name ?? 'Restaurant'}
-            width={400}
-            height={260}
+            fill
             className={styles.img}
-            sizes="(max-width: 768px) 80vw, 33vw"
+            sizes={isMini ? '231px' : '379px'}
           />
         </div>
       ) : null}

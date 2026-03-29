@@ -45,7 +45,7 @@ export async function ChefSection(props: SectionsChef) {
           <h2 id="chef-restaurants-heading" className={styles.restaurantsTitle}>
             {restaurantsTitle}
           </h2>
-          <Carousel ariaLabel={carouselAriaLabel} slideClassName={styles.miniSlide}>
+          <Carousel ariaLabel={carouselAriaLabel}>
             {restaurants.map((r) => (
               <div key={r.id ?? r.name} className={styles.cardItem}>
                 <RestaurantCard

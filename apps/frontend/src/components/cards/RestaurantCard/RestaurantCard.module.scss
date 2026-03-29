@@ -1,24 +1,29 @@
 @use '../../../app/styles/breakpoints' as bp;
 
 .card {
+  width: 379px;
   overflow: hidden;
   background: var(--color-cream);
 }
 
 .thumb {
   position: relative;
-  aspect-ratio: 16 / 10;
+  width: 100%;
+  aspect-ratio: 379 / 236;
 }
 
 .img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  padding: 0.85rem 0.75rem 1rem;
+  padding: 24px 0.75rem;
+  gap: 8px;
 }
 
 .name {
@@ -27,12 +32,11 @@
 }
 
 .subtitle {
-  margin-top: 0.2rem;
+  // gap on .body handles spacing
 }
 
 .rating {
   display: none; /* hidden on mobile */
-  margin-top: 0.35rem;
   font-size: var(--font-size-star);
   line-height: 1;
   color: var(--color-gold);
@@ -46,14 +50,24 @@
 }
 
 .cardMini {
-  max-width: 204px;
+  width: 231px;
+  height: 357px;
+  display: flex;
+  flex-direction: column;
 
-  .body {
-    padding: 0.5rem 0.5rem 0.75rem;
-    text-align: center;
+  .thumb {
+    width: 100%;
+    aspect-ratio: 231 / 224;
   }
 
-  /* Scale name font to 60% of the full h3: 1rem mobile, 1.5rem desktop */
+  .body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0.5rem 0;
+    gap: 8px;
+  }
+
   .name {
     font-size: var(--font-size-button); /* 1rem — readable floor for small card */
 
