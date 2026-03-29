@@ -16,9 +16,9 @@ export function HomepageSections(props: {
 
   return (
     <div className={styles.root}>
-      <main className={styles.main}>
+      <div className={styles.main}>
         {sections.map((section, index) => renderSection(section, index))}
-      </main>
+      </div>
     </div>
   );
 }
