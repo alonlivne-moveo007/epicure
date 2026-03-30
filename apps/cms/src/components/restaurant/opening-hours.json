@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_restaurant_opening_hours",
+  "info": {
+    "displayName": "opening_hours"
+  },
+  "options": {},
+  "attributes": {
+    "day": {
+      "type": "enumeration",
+      "enum": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ]
+    },
+    "open_time": {
+      "type": "time"
+    },
+    "close_time": {
+      "type": "time"
+    }
+  },
+  "config": {}
+}

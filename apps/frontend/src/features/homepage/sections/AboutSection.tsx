@@ -7,16 +7,13 @@
  */
 
 import { SectionWrapper } from '@/components/layout/SectionWrapper/SectionWrapper';
-import type {
-  SectionsAbout,
-  StrapiBlock,
-  StrapiBlockChild,
-} from '@/features/homepage/model/homepage.types';
+import type { StrapiBlockChildDto, StrapiBlockDto } from '@epicure/strapi-dto';
+import type { SectionsAbout } from '@/features/homepage/model/homepage.types';
 
 import styles from './AboutSection.module.scss';
 
 /** Depth-first text extraction for Strapi block `children` trees (MVP: paragraph + text nodes). */
-function collectText(nodes: StrapiBlockChild[] | undefined): string {
+function collectText(nodes: StrapiBlockChildDto[] | undefined): string {
   if (!nodes?.length) return '';
   return nodes
     .map((n) => {
@@ -27,7 +24,7 @@ function collectText(nodes: StrapiBlockChild[] | undefined): string {
 }
 
 /** Maps Strapi blocks to `<p>` elements; ignores unknown block types for forward compatibility. */
-function renderBlocks(blocks: StrapiBlock[] | null | undefined) {
+function renderBlocks(blocks: StrapiBlockDto[] | null | undefined) {
   if (!blocks?.length) return null;
   return blocks.map((block, i) => {
     if (block.type === 'paragraph') {

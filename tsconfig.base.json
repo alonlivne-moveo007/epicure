@@ -16,6 +16,12 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es2022",
-    "customConditions": ["@epicure/source"]
+    "customConditions": ["@epicure/source"],
+    "paths": {
+      "@epicure/mappers": ["libs/shared/mappers/src/index.ts"],
+      "@epicure/domain": ["libs/shared/domain/src/index.ts"],
+      "@epicure/strapi-dto": ["libs/shared/strapi-dto/src/index.ts"],
+      "@epicure/strapi-media": ["libs/shared/strapi-media/src/index.ts"]
+    }
   }
 }

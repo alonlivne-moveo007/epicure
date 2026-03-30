@@ -45,6 +45,21 @@
       "relation": "oneToMany",
       "target": "api::dish.dish",
       "mappedBy": "restaurant"
+    },
+    "opening_hours": {
+      "type": "component",
+      "component": "restaurant.opening-hours",
+      "repeatable": true
+    },
+    "loction": {
+      "type": "component",
+      "component": "restaurant.location",
+      "repeatable": false
+    },
+    "price_range": {
+      "type": "component",
+      "component": "restaurant.price-range",
+      "repeatable": false
     }
   }
 }

@@ -10,7 +10,6 @@ import { Carousel } from '@/components/carousel/Carousel.client';
 import { SectionWrapper } from '@/components/layout/SectionWrapper/SectionWrapper';
 import { getRestaurantsByChef } from '@/features/restaurants/api/get-restaurants';
 import type { SectionsChef } from '@/features/homepage/model/homepage.types';
-import { strapiImageSrc } from '@/lib/strapi-media';
 
 import styles from './ChefSection.module.scss';
 
@@ -23,7 +22,7 @@ export async function ChefSection(props: SectionsChef) {
   const { title, chef } = props;
   if (!chef) return null;
 
-  const src = strapiImageSrc(chef.image);
+  const src = chef.imageUrl ?? null;
   const restaurants = chef.id ? await getRestaurantsByChef(chef.id) : [];
 
   const restaurantsTitle = possessiveRestaurantsTitle(chef.name);
@@ -34,7 +33,7 @@ export async function ChefSection(props: SectionsChef) {
       <div className={styles.body}>
         {src ? (
           <div className={styles.cardWrap}>
-            <ChefCard imageUrl={src} name={chef.name ?? ''} />
+            <ChefCard imageUrl={src} name={chef.name} />
           </div>
         ) : null}
         {chef.bio ? <p className={`${styles.bio} body`}>{chef.bio}</p> : null}
@@ -50,7 +49,7 @@ export async function ChefSection(props: SectionsChef) {
               <div key={r.id ?? r.name} className={styles.cardItem}>
                 <RestaurantCard
                   variant="mini"
-                  imageUrl={strapiImageSrc(r.image)}
+                  imageUrl={r.imageUrl ?? undefined}
                   name={r.name}
                 />
               </div>

@@ -10,7 +10,6 @@ import { RestaurantCard } from '@/components/cards/RestaurantCard/RestaurantCard
 import { Carousel } from '@/components/carousel/Carousel.client';
 import { SectionWrapper } from '@/components/layout/SectionWrapper/SectionWrapper';
 import type { SectionsRestaurants } from '@/features/homepage/model/homepage.types';
-import { strapiImageSrc } from '@/lib/strapi-media';
 
 import styles from './RestaurantsSection.module.scss';
 
@@ -22,13 +21,12 @@ export function RestaurantsSection(props: SectionsRestaurants) {
     <SectionWrapper title={title} titleId="restaurants-heading">
       <Carousel ariaLabel="Popular restaurants">
         {list.map((r) => {
-          const imageUrl = strapiImageSrc(r.image);
           return (
             <div key={r.id ?? r.name} className={styles.cardItem}>
               <RestaurantCard
-                imageUrl={imageUrl}
+                imageUrl={r.imageUrl ?? undefined}
                 name={r.name}
-                subtitle={r.chef?.name ?? r.description}
+                subtitle={r.chefName ?? r.description}
                 rating={r.rating}
               />
             </div>

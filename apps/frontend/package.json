@@ -4,6 +4,10 @@
   "private": true,
   "dependencies": {
     "@epicure/backend-types": "*",
+    "@epicure/domain": "^0.0.1",
+    "@epicure/mappers": "^0.0.1",
+    "@epicure/strapi-dto": "^0.0.1",
+    "@epicure/strapi-media": "^0.0.1",
     "embla-carousel-react": "^8.6.0",
     "next": "~16.0.1",
     "react": "^19.0.0",

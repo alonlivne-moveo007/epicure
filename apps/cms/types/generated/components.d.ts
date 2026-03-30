@@ -1,5 +1,63 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface RestaurantLocation extends Struct.ComponentSchema {
+  collectionName: 'components_restaurant_locations';
+  info: {
+    displayName: 'location';
+  };
+  attributes: {
+    latitude: Schema.Attribute.Float &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 90;
+          min: -90;
+        },
+        number
+      >;
+    longitude: Schema.Attribute.Float &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 180;
+          min: -180;
+        },
+        number
+      >;
+  };
+}
+
+export interface RestaurantOpeningHours extends Struct.ComponentSchema {
+  collectionName: 'components_restaurant_opening_hours';
+  info: {
+    displayName: 'opening_hours';
+  };
+  attributes: {
+    close_time: Schema.Attribute.Time;
+    day: Schema.Attribute.Enumeration<
+      [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+      ]
+    >;
+    open_time: Schema.Attribute.Time;
+  };
+}
+
+export interface RestaurantPriceRange extends Struct.ComponentSchema {
+  collectionName: 'components_restaurant_price_ranges';
+  info: {
+    displayName: 'price_range';
+  };
+  attributes: {
+    max_price: Schema.Attribute.Integer;
+    min_price: Schema.Attribute.Integer;
+  };
+}
+
 export interface SectionsAbout extends Struct.ComponentSchema {
   collectionName: 'components_sections_abouts';
   info: {
@@ -76,6 +134,9 @@ export interface SectionsTags extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'restaurant.location': RestaurantLocation;
+      'restaurant.opening-hours': RestaurantOpeningHours;
+      'restaurant.price-range': RestaurantPriceRange;
       'sections.about': SectionsAbout;
       'sections.chef': SectionsChef;
       'sections.dishs': SectionsDishs;

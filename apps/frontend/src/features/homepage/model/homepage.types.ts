@@ -6,54 +6,8 @@
  * not the older `attributes` wrapper). Adjust when the CMS schema or populate depth changes.
  */
 
-/** Strapi `blocks` field on `sections.about` — enough structure to render paragraph text. */
-export type StrapiBlockChild = {
-  type?: string;
-  text?: string;
-  children?: StrapiBlockChild[];
-};
-
-export type StrapiBlock = {
-  type?: string;
-  children?: StrapiBlockChild[];
-};
-
-/** Chef entity when populated from `sections.chef` or nested under restaurants. */
-export type StrapiChef = {
-  id?: number;
-  name?: string;
-  bio?: string | null;
-  image?: unknown;
-  restaurants?: unknown[];
-};
-
-/** Restaurant row as populated for `sections.restaurants` (and nested under chef). */
-export type StrapiRestaurant = {
-  id?: number;
-  name?: string;
-  description?: string | null;
-  rating?: number | null;
-  image?: unknown;
-  chef?: { name?: string } | null;
-};
-
-/** Dish row as populated for `sections.dishs`. */
-export type StrapiDish = {
-  id?: number;
-  name?: string;
-  description?: string | null;
-  price?: number | null;
-  image?: unknown;
-  tags?: StrapiTag[] | null;
-};
-
-/** Tag row as populated for `sections.tags`. */
-export type StrapiTag = {
-  id?: number;
-  name?: string;
-  slug?: string | null;
-  image?: unknown;
-};
+import type { Chef, Dish, Restaurant, Tag } from '@epicure/domain';
+import type { StrapiBlockDto } from '@epicure/strapi-dto';
 
 /** Every dynamic-zone entry includes Strapi’s component UID and a component instance id. */
 type SectionBase = {
@@ -73,35 +27,35 @@ export type SectionsHero = SectionBase & {
 export type SectionsRestaurants = SectionBase & {
   __component: 'sections.restaurants';
   title?: string | null;
-  restaurants?: StrapiRestaurant[] | null;
+  restaurants?: Restaurant[] | null;
 };
 
 /** `sections.dishs` (Strapi UID spelling) — populated `dishes` relation. */
 export type SectionsDishs = SectionBase & {
   __component: 'sections.dishs';
   title?: string | null;
-  dishes?: StrapiDish[] | null;
+  dishes?: Dish[] | null;
 };
 
 /** `sections.tags` — populated `tags` relation. */
 export type SectionsTags = SectionBase & {
   __component: 'sections.tags';
   title?: string | null;
-  tags?: StrapiTag[] | null;
+  tags?: Tag[] | null;
 };
 
 /** `sections.chef` — populated one-to-one `chef` (may include nested `restaurants`). */
 export type SectionsChef = SectionBase & {
   __component: 'sections.chef';
   title?: string | null;
-  chef?: StrapiChef | null;
+  chef?: Chef | null;
 };
 
 /** `sections.about` — `description` is Strapi blocks. */
 export type SectionsAbout = SectionBase & {
   __component: 'sections.about';
   title?: string | null;
-  description?: StrapiBlock[] | null;
+  description?: StrapiBlockDto[] | null;
 };
 
 /** Discriminated union on `__component` for the homepage dynamic zone renderer. */

@@ -60,7 +60,8 @@
     "apps/frontend",
     "apps/backend-e2e",
     "libs/*",
-    "libs/backend/*"
+    "libs/backend/*",
+    "libs/shared/*"
   ],
   "dependencies": {
     "@nestjs/common": "^11.0.0",

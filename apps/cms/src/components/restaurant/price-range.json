@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_restaurant_price_ranges",
+  "info": {
+    "displayName": "price_range"
+  },
+  "options": {},
+  "attributes": {
+    "min_price": {
+      "type": "integer"
+    },
+    "max_price": {
+      "type": "integer"
+    }
+  },
+  "config": {}
+}

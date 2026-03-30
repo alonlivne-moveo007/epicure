@@ -16,6 +16,15 @@
 import 'server-only';
 
 import type { ApiResponse } from '@epicure/backend-types';
+import type { Restaurant, Tag, Dish, Chef } from '@epicure/domain';
+import type {
+  StrapiBlockDto,
+  StrapiChefDto,
+  StrapiDishDto,
+  StrapiRestaurantDto,
+  StrapiTagDto,
+} from '@epicure/strapi-dto';
+import { mapToChef, mapToDishes, mapToRestaurants, mapToTags } from '@epicure/mappers';
 
 import { getBffBaseUrl } from '@/lib/bff-url';
 import type {
@@ -28,6 +37,71 @@ function isRecord(v: unknown): v is Record<string, unknown> {
 }
 
 /** Walks BFF + Strapi wrappers and returns the homepage `sections` dynamic zone (or `[]`). */
+type HomepageSectionDto =
+  | {
+      id?: number;
+      __component: 'sections.hero';
+      title?: string | null;
+      searchPlaceholder?: string | null;
+      backgroundImage?: unknown;
+    }
+  | {
+      id?: number;
+      __component: 'sections.restaurants';
+      title?: string | null;
+      restaurants?: StrapiRestaurantDto[] | null;
+    }
+  | {
+      id?: number;
+      __component: 'sections.dishs';
+      title?: string | null;
+      dishes?: StrapiDishDto[] | null;
+    }
+  | {
+      id?: number;
+      __component: 'sections.tags';
+      title?: string | null;
+      tags?: StrapiTagDto[] | null;
+    }
+  | {
+      id?: number;
+      __component: 'sections.chef';
+      title?: string | null;
+      chef?: StrapiChefDto | null;
+    }
+  | {
+      id?: number;
+      __component: 'sections.about';
+      title?: string | null;
+      description?: StrapiBlockDto[] | null;
+    };
+
+function mapSection(dto: HomepageSectionDto): HomepageSection | null {
+  switch (dto.__component) {
+    case 'sections.hero':
+    case 'sections.about':
+      return dto as unknown as HomepageSection;
+    case 'sections.restaurants': {
+      const restaurants: Restaurant[] | null = dto.restaurants ? mapToRestaurants(dto.restaurants) : null;
+      return { ...dto, restaurants };
+    }
+    case 'sections.dishs': {
+      const dishes: Dish[] | null = dto.dishes ? mapToDishes(dto.dishes) : null;
+      return { ...dto, dishes };
+    }
+    case 'sections.tags': {
+      const tags: Tag[] | null = dto.tags ? mapToTags(dto.tags) : null;
+      return { ...dto, tags };
+    }
+    case 'sections.chef': {
+      const chef: Chef | null = dto.chef ? mapToChef(dto.chef) : null;
+      return { ...dto, chef };
+    }
+    default:
+      return null;
+  }
+}
+
 function extractSections(body: unknown): HomepageSection[] {
   if (!isRecord(body)) return [];
   const inner = body['data'];
@@ -36,7 +110,7 @@ function extractSections(body: unknown): HomepageSection[] {
   if (!isRecord(entity)) return [];
   const raw = entity['sections'];
   if (!Array.isArray(raw)) return [];
-  return raw as HomepageSection[];
+  return (raw as HomepageSectionDto[]).map(mapSection).filter((s): s is HomepageSection => s != null);
 }
 
 /** Loads homepage sections from the BFF; throws if the HTTP status is not OK. */

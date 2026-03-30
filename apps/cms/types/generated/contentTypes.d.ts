@@ -555,7 +555,10 @@ export interface ApiRestaurantRestaurant extends Struct.CollectionTypeSchema {
       'api::restaurant.restaurant'
     > &
       Schema.Attribute.Private;
+    loction: Schema.Attribute.Component<'restaurant.location', false>;
     name: Schema.Attribute.String & Schema.Attribute.Required;
+    opening_hours: Schema.Attribute.Component<'restaurant.opening-hours', true>;
+    price_range: Schema.Attribute.Component<'restaurant.price-range', false>;
     publishedAt: Schema.Attribute.DateTime;
     rating: Schema.Attribute.Integer &
       Schema.Attribute.SetMinMax<
