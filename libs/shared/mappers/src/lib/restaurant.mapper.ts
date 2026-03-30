@@ -1,7 +1,7 @@
 import type { Restaurant } from '@epicure/domain';
 import type { StrapiRestaurantDto } from '@epicure/strapi-dto';
 import { strapiImageSrc } from '@epicure/strapi-media';
-import { mapToDishes } from './dish.mapper.js';
+import { mapToDishes } from './dish.mapper';
 
 export function mapToRestaurant(dto: StrapiRestaurantDto | null | undefined): Restaurant | null {
   if (!dto) return null;

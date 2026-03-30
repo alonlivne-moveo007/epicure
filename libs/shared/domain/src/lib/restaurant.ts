@@ -1,4 +1,4 @@
-import { Dish } from "./dish.js";
+import { Dish } from "./dish";
 
 export interface Restaurant {
   id: number | null;
