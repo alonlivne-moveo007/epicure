@@ -8,7 +8,6 @@ import { ChefCard } from '@/components/cards/ChefCard/ChefCard';
 import { RestaurantCard } from '@/components/cards/RestaurantCard/RestaurantCard';
 import { Carousel } from '@/components/carousel/Carousel.client';
 import { SectionWrapper } from '@/components/layout/SectionWrapper/SectionWrapper';
-import { getRestaurantsByChef } from '@/features/restaurants/api/get-restaurants';
 import type { SectionsChef } from '@/features/homepage/model/homepage.types';
 
 import styles from './ChefSection.module.scss';
@@ -23,7 +22,7 @@ export async function ChefSection(props: SectionsChef) {
   if (!chef) return null;
 
   const src = chef.imageUrl ?? null;
-  const restaurants = chef.id ? await getRestaurantsByChef(chef.id) : [];
+  const restaurants = chef.restaurants ?? [];
 
   const restaurantsTitle = possessiveRestaurantsTitle(chef.name);
   const carouselAriaLabel = `${chef.name ?? 'Chef'} restaurants`;

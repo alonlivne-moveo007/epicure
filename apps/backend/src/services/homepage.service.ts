@@ -17,7 +17,7 @@ const DEFAULT_HOMEPAGE_QUERY: StrapiQueryParams = {
     sections: {
       on: {
         'sections.hero': {
-          populate: ['backgroundImage'],
+          populate: { backgroundImage: true },
         },
         'sections.restaurants': {
           populate: {
@@ -41,11 +41,16 @@ const DEFAULT_HOMEPAGE_QUERY: StrapiQueryParams = {
         },
         'sections.chef': {
           populate: {
-            chef: { populate: ['image'] },
+            chef: {
+              populate: {
+                image: true,
+                restaurants: { populate: { image: true } },
+              },
+            },
           },
         },
         'sections.about': {
-          populate: ['image'],
+          populate: '*',
         },
       },
     },
