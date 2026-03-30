@@ -8,11 +8,14 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  width: 100%; 
+  min-width: 0;
 
   @media (min-width: bp.$lg) {
     flex-direction: row;
     align-items: flex-start;
     gap: 4rem; /* 64px — Figma gap between card edge and bio start */
+    width: auto;
   }
 }
 
@@ -21,9 +24,13 @@
 }
 
 .bio {
+  width: 100%; 
+  word-wrap: break-word; 
+  overflow-wrap: break-word;
   @media (min-width: bp.$lg) {
     flex: 1;
     min-width: 0;
+    width: auto;
   }
 }
 
