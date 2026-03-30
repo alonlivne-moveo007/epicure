@@ -2,11 +2,14 @@
 
 .section {
   padding: var(--section-padding-top) var(--container-padding-mobile);
-  max-width: var(--container-max-width);
+  width: 100%; 
+  max-width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
 
   @media (min-width: bp.$lg) {
     padding: var(--section-padding-top) var(--container-padding-desktop);
+    max-width: var(--container-max-width);
   }
 }
 
