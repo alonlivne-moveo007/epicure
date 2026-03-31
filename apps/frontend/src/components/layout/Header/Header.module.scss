@@ -79,6 +79,12 @@
   margin-left: auto; /* pushes icons to the far right */
 }
 
+@media (max-width: (bp.$lg - 1px)) {
+  .headerMenuOpenMobile .icons {
+    display: none;
+  }
+}
+
 .iconBtn {
   display: flex;
   align-items: center;
