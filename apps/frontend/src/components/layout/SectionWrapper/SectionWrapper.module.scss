@@ -1,0 +1,36 @@
+@use '../../../app/styles/breakpoints' as bp;
+
+.section {
+  padding: var(--section-padding-top) var(--container-padding-mobile);
+  width: 100%; 
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  @media (min-width: bp.$lg) {
+    padding: var(--section-padding-top) var(--container-padding-desktop);
+    max-width: var(--container-max-width);
+  }
+}
+
+.heading {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-black);
+  margin-bottom: 1.25rem;
+  text-align: left;
+
+  @media (min-width: bp.$lg) {
+    text-align: center;
+  }
+}
+
+.content {
+  min-width: 0;
+}
+
+.footer {
+  margin-top: var(--spacing-sm);
+  display: flex;
+  justify-content: flex-end;
+}

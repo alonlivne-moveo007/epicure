@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "collectionName": "restaurants",
+  "info": {
+    "singularName": "restaurant",
+    "pluralName": "restaurants",
+    "displayName": "Restaurant"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "rating": {
+      "type": "integer",
+      "default": 0,
+      "min": 0,
+      "max": 5
+    },
+    "chef": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::chef.chef",
+      "inversedBy": "restaurants"
+    },
+    "dishes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::dish.dish",
+      "mappedBy": "restaurant"
+    },
+    "opening_hours": {
+      "type": "component",
+      "component": "restaurant.opening-hours",
+      "repeatable": true
+    },
+    "loction": {
+      "type": "component",
+      "component": "restaurant.location",
+      "repeatable": false
+    },
+    "price_range": {
+      "type": "component",
+      "component": "restaurant.price-range",
+      "repeatable": false
+    }
+  }
+}

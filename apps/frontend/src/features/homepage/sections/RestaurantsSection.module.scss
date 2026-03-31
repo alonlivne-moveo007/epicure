@@ -1,0 +1,26 @@
+// `RestaurantsSection` — local wrappers around shared `RestaurantCard` + `Carousel`.
+
+.cardItem {
+  min-width: 0;
+}
+
+.allRestaurantsRow {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: var(--spacing-sm);
+
+  @media (min-width: 1024px) {
+    justify-content: flex-end;
+  }
+}
+
+.allRestaurantsLink {
+  display: inline-flex;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

@@ -1,0 +1,197 @@
+// Global styles for the App Router root. Prefer co-located `*.module.scss` for feature UI
+// (e.g. `features/homepage/sections/`) to avoid selector collisions.
+
+// ─── Design Tokens ───────────────────────────────────────────────────────────
+:root {
+  // Colors — Primary (source: "04 COLORS" page)
+  --color-black: #000000;
+  --color-gray: #979797;
+
+  // Colors — Secondary (source: "04 COLORS" page)
+  --color-cream: #f9f4ea;
+  --color-gold: #e19d1a;
+  --color-white-off: #fafafa;
+  --color-white: #ffffff;
+  --color-gray-light: #f2f2f2;
+
+  // Typography (source: "03 DESKTOP/MOBILE TYPOGRAPHY" pages)
+  --font-family: 'Helvetica Neue', Arial, sans-serif;
+  --font-weight-thin: 100;
+  --font-weight-regular: 400;
+
+  // Font sizes — desktop (source: "03 DESKTOP TYPOGRAPHY" page)
+  --font-size-h1: 2rem;        /* 32px */
+  --font-size-h2: 1.875rem;    /* 30px */
+  --font-size-h3: 2.5rem;      /* 40px */
+  --font-size-body: 1.5rem;    /* 24px */
+  --font-size-button: 1rem;    /* 16px */
+  --font-size-input: 1rem;     /* 16px */
+  --font-size-label: 0.875rem; /* 14px */
+  --font-size-star: 1.55rem;   /* decorative star glyphs — RestaurantCard rating */
+
+  // Font sizes — mobile (source: "03 MOBILE TYPOGRAPHY" page)
+  --font-size-h1-mobile: 1.5rem;    /* 24px */
+  --font-size-h2-mobile: 1rem;      /* 16px */
+  --font-size-h3-mobile: 1.125rem;  /* 18px */
+  --font-size-body-mobile: 1rem;    /* 16px */
+  // button, input, label are identical on mobile and desktop
+
+  // Line heights
+  --line-height-base: 1.5;     /* html/body default */
+  --line-height-tight: 1.1;    /* condensed headings, card names */
+  --line-height-snug: 1.2;     /* hero titles */
+  --line-height-relaxed: 1.6;  /* long-form body copy */
+
+  // Layout — Desktop (source: "01 GRID" + "02 LAYOUT" pages)
+  --container-max-width: 1440px;
+  --container-padding-desktop: 128px;
+  --section-padding-top: 40px;
+  --grid-gap: 24px;
+
+  // Layout — Mobile (source: "01 GRID" + "02 LAYOUT" pages)
+  --container-padding-mobile: 20px;
+
+  // Spacing (source: "02 LAYOUT" — canvas annotations)
+  --spacing-sm: 16px;
+  --spacing-lg: 48px;
+
+  // Navigation (source: "09 NAVIGATION" page)
+  --nav-height-desktop: 64px;
+  --nav-height-mobile: 46px;
+}
+
+// ─── Base Reset ───────────────────────────────────────────────────────────────
+html {
+  -webkit-text-size-adjust: 100%;
+  font-family: var(--font-family);
+  line-height: 1.5;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: inherit;
+  line-height: inherit;
+  margin: 0;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: currentColor;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+svg {
+  display: block;
+  vertical-align: middle;
+  shape-rendering: auto;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+// ─── Typography Classes ───────────────────────────────────────────────────────
+// Single source of truth for all font-size and font-weight across the app.
+// Components must NOT redeclare font-size or font-weight — use these classes only.
+
+.h1 {
+  font-size: var(--font-size-h1-mobile);
+  font-weight: var(--font-weight-thin);
+
+  @media (min-width: 768px) {
+    font-size: var(--font-size-h1);
+  }
+}
+
+.h2 {
+  font-size: var(--font-size-h2-mobile);
+  font-weight: var(--font-weight-thin);
+
+  @media (min-width: 768px) {
+    font-size: var(--font-size-h2);
+  }
+}
+
+.h3 {
+  font-size: var(--font-size-h3-mobile);
+  font-weight: var(--font-weight-regular);
+
+  @media (min-width: 768px) {
+    font-size: var(--font-size-h3);
+  }
+}
+
+.body {
+  font-size: var(--font-size-body-mobile);
+  font-weight: var(--font-weight-thin);
+
+  @media (min-width: 768px) {
+    font-size: var(--font-size-body);
+  }
+}
+
+.button-text {
+  font-size: var(--font-size-button);
+  font-weight: var(--font-weight-thin);
+}
+
+.input-text {
+  font-size: var(--font-size-input);
+  font-weight: var(--font-weight-thin);
+}
+
+.label {
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-thin);
+}
+
+// ─── Semantic HTML Mappings ───────────────────────────────────────────────────
+// h1/h2/h3 elements automatically inherit the correct typography class.
+// No className needed in JSX for heading elements.
+
+h1 {
+  @extend .h1;
+}
+
+h2 {
+  @extend .h2;
+}
+
+h3 {
+  @extend .h3;
+}

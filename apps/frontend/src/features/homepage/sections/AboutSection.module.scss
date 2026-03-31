@@ -1,0 +1,121 @@
+// `AboutSection` — about block with store buttons and Epicure logo.
+//
+// Mobile  (flex column): logo → store buttons → title → body
+// Desktop (CSS grid)   : [title + body + store buttons] left | [logo] right
+
+@use '../../../app/styles/breakpoints' as bp;
+
+.wrapper {
+  background: var(--color-gray-light);
+  width: 100%;
+}
+
+/* ── Layout container ──────────────────────────────────────────────────────── */
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @media (min-width: bp.$lg) {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 0 2.5rem;
+  }
+}
+
+/* ── Logo ──────────────────────────────────────────────────────────────────── */
+
+.logoWrap {
+  order: 1; /* first on mobile */
+
+  @media (min-width: bp.$lg) {
+    order: unset;
+    grid-column: 2;
+    grid-row: 1 / 4; /* spans all rows on desktop right column */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+.logo {
+  display: block;
+  height: auto;
+}
+
+.logoMobile {
+  width: 120px; /* mobile logo is smaller */
+
+  @media (min-width: bp.$lg) {
+    display: none; /* hide mobile logo on desktop */
+  }
+}
+
+.logoDesktop {
+  display: none; /* hide desktop logo on mobile */
+  width: 179px;
+
+  @media (min-width: bp.$lg) {
+    display: block;
+  }
+}
+
+/* ── Store buttons ─────────────────────────────────────────────────────────── */
+
+.storeButtons {
+  order: 2; /* second on mobile */
+  display: flex;
+  flex-direction: column; /* stacked vertically on mobile (matches Figma) */
+  gap: var(--spacing-sm);
+
+  @media (min-width: bp.$lg) {
+    order: unset;
+    grid-column: 1;
+    grid-row: 3;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: var(--spacing-lg);
+  }
+}
+
+.storeBtn {
+  width: 180px;
+  height: auto;
+  display: block;
+}
+
+/* ── Title ─────────────────────────────────────────────────────────────────── */
+
+.title {
+  order: 3; /* third on mobile */
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-black);
+
+  @media (min-width: bp.$lg) {
+    order: unset;
+    grid-column: 1;
+    grid-row: 1;
+    margin-bottom: 1.25rem;
+  }
+}
+
+/* ── Body copy ─────────────────────────────────────────────────────────────── */
+
+.body {
+  order: 4; /* fourth on mobile */
+  line-height: var(--line-height-relaxed);
+  min-width: 0;
+
+  @media (min-width: bp.$lg) {
+    order: unset;
+    grid-column: 1;
+    grid-row: 2;
+  }
+}
+
+.para {
+  // gap on .body handles spacing between paragraphs
+}

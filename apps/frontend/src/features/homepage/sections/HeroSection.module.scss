@@ -1,0 +1,90 @@
+// Styles for `HeroSection.tsx` — full-bleed hero, optional background image + scrim, fallback gradient.
+
+@use '../../../app/styles/breakpoints' as bp;
+
+.hero {
+  position: relative;
+  min-height: clamp(220px, 45vw, 420px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem var(--container-padding-mobile);
+  overflow: hidden;
+
+  @media (min-width: bp.$lg) {
+    padding: 2rem var(--container-padding-desktop);
+  }
+}
+
+.heroFallback {
+  background: linear-gradient(135deg, var(--color-black) 0%, var(--color-gray) 100%);
+}
+
+.bg {
+  object-fit: cover;
+  z-index: 0;
+}
+
+.scrim {
+  display: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  background: color-mix(in srgb, var(--color-white) 80%, transparent); /* same as ChefCard overlay */
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.innerWrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+}
+
+.title {
+  line-height: var(--line-height-snug);
+  color: var(--color-black);
+}
+
+.searchLabel {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.searchFakeInput {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.65rem 1rem;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--color-black);
+  border: 0.5px solid var(--color-black);
+}
+
+.searchIcon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

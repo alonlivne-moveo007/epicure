@@ -1,0 +1,6 @@
+// Breakpoint variables — single source of truth for all @media queries.
+// Usage: @use 'app/styles/breakpoints' as bp;
+//        @media (min-width: bp.$lg) { … }
+
+$lg: 1024px;  // desktop nav, section horizontal padding
+$xl: 1100px;  // carousel slide sizing

@@ -1,0 +1,42 @@
+@use '../../../app/styles/breakpoints' as bp;
+
+/* ─────────────────────────────────────────────────────────────
+   Mobile  : 335 × 262px card, overlay 51px tall
+   Desktop : 433 × 338px card, overlay 78px tall
+───────────────────────────────────────────────────────────── */
+.card {
+  position: relative;
+  width: 335px;
+  height: 262px;
+  overflow: hidden;
+  background: var(--color-black); /* fallback while image loads */
+  flex-shrink: 0;
+
+  @media (min-width: bp.$lg) {
+    width: 433px;
+    height: 338px;
+  }
+}
+
+.img {
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: auto 0 0; /* sticks to the bottom edge, full width */
+  height: 51px;
+  background: color-mix(in srgb, var(--color-white) 80%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: bp.$lg) {
+    height: 78px;
+  }
+}
+
+.name {
+  text-align: center;
+  color: var(--color-black);
+}

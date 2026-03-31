@@ -1,0 +1,112 @@
+@use '../../../app/styles/breakpoints' as bp;
+
+/* ─────────────────────────────────────────────────────────────
+   Base = variant="full"
+   Mobile  : 334px wide, 334/207 image, left-aligned body
+   Desktop : 379px wide, 379/236 image, center-aligned body
+───────────────────────────────────────────────────────────── */
+.card {
+  width: 334px;
+  overflow: hidden;
+  background: var(--color-cream);
+
+  @media (min-width: bp.$lg) {
+    width: 379px;
+  }
+}
+
+.thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 334 / 207;
+
+  @media (min-width: bp.$lg) {
+    aspect-ratio: 379 / 236;
+  }
+}
+
+.img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  height: 81px;
+  padding: 16px;
+  gap: 10px;
+
+  @media (min-width: bp.$lg) {
+    align-items: center;
+    text-align: center;
+    height: auto;
+    padding: 24px 0.75rem;
+    gap: 8px;
+  }
+}
+
+.name {
+  line-height: var(--line-height-tight);
+  color: var(--color-black);
+}
+
+.subtitle {
+  // gap on .body handles spacing
+}
+
+.rating {
+  display: none;
+  font-size: var(--font-size-star);
+  line-height: 1;
+  color: var(--color-gold);
+  letter-spacing: 0.08em;
+
+  @media (min-width: bp.$lg) {
+    display: block;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Modifier = variant="mini"  (applied together with .card)
+   Mobile  : 245px wide, 245/151.8 image, left-aligned body, subtitle visible
+   Desktop : 231px wide, 231/224 image, center-aligned body, subtitle hidden
+───────────────────────────────────────────────────────────── */
+.cardMini {
+  width: 245px;
+
+  @media (min-width: bp.$lg) {
+    width: 231px;
+    height: 357px;
+  }
+
+  .thumb {
+    aspect-ratio: 245 / 151.8;
+
+    @media (min-width: bp.$lg) {
+      aspect-ratio: 231 / 224;
+    }
+  }
+
+  .body {
+    @media (min-width: bp.$lg) {
+      padding: 20px 0.5rem 0;
+    }
+  }
+
+  .name {
+    font-size: var(--font-size-button); /* 1rem — keeps text in 245px card */
+
+    @media (min-width: bp.$lg) {
+      font-size: 1.5rem;
+    }
+  }
+
+  .subtitle {
+    @media (min-width: bp.$lg) {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+// Page chrome for the marketing homepage: stacks dynamic-zone sections vertically.
+
+.root {
+  min-height: 100vh;
+  background: var(--color-white-off);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}

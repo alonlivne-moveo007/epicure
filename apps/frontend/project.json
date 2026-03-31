@@ -22,6 +22,14 @@
         "development": {}
       },
       "continuous": true
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/frontend/jest.config.cts",
+        "passWithNoTests": true
+      }
     }
   }
 }

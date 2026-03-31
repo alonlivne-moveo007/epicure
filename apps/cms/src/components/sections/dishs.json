@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_sections_dishs",
+  "info": {
+    "displayName": "dishes"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "dishes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::dish.dish"
+    }
+  },
+  "config": {}
+}

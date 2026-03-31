@@ -1,13 +1,22 @@
 $kind: collection
-description: "REST CRUD for Strapi collection types: dishes, restaurants, chefs
-  (detected from your running Strapi). You will get 403 until Settings → Users &
+description: >-
+  REST CRUD for Strapi collection types (dishes, restaurants, chefs, tags)
+  against `{{baseUrl}}` (port 1337). You will get 403 until Settings → Users &
   Permissions → Roles grants access for the `find` / `findOne` / `create` /
   `update` / `delete` actions, or you use a valid API token. In Postman:
   Collection → Authorization → Type Bearer Token, Token `{{apiToken}}`, and set
-  the `apiToken` collection variable."
+  the `apiToken` collection variable.
+
+
+  **Homepage — Nest BFF** exposes **GET only** at `{{backendUrl}}/api/homepage`
+  (read-only); edit or delete the homepage in Strapi Admin. Nest proxies to
+  Strapi using `CMS_URL` and `STRAPI_API_TOKEN` from `apps/backend/.env`. Grant
+  the Public role or API token `find` permission for Homepage in Strapi.
 variables:
   baseUrl: http://localhost:1337
   apiToken: ""
+  backendUrl: http://localhost:3002
   dishId: "1"
   restaurantId: "1"
   chefId: "1"
+  tagId: "1"

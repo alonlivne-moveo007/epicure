@@ -1,0 +1,26 @@
+@use '../../../app/styles/breakpoints' as bp;
+@use '../../../app/styles/mixins' as mx;
+
+.footer {
+  background: var(--color-white);
+  border-top: 1px solid var(--color-gray);
+  padding: var(--spacing-lg) var(--container-padding-mobile);
+}
+
+.list {
+  @include mx.list-reset;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+
+  @media (min-width: bp.$lg) {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.link {
+  @include mx.interactive-link;
+}

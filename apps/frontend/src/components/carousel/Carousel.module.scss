@@ -1,0 +1,18 @@
+.viewport {
+  overflow: hidden;
+  min-width: 0;
+}
+
+.track {
+  display: flex;
+  align-items: stretch;
+  gap: 1.5rem;
+  padding: 0.125rem 0.125rem 0.5rem;
+}
+
+.slide {
+  flex: 0 0 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}

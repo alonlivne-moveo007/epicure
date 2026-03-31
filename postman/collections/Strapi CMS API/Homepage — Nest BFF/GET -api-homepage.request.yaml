@@ -1,0 +1,8 @@
+$kind: http-request
+name: GET /api/homepage
+description: "Read-only: proxied to Strapi GET /api/homepage. Query params are
+  forwarded (e.g. nested `populate` for dynamic zones). Edit homepage in Strapi
+  Admin."
+url: "{{backendUrl}}/api/homepage"
+method: GET
+order: 1000

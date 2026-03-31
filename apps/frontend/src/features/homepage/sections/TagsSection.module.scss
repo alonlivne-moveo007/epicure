@@ -1,0 +1,36 @@
+@use '../../../app/styles/mixins' as mx;
+
+.wrapper {
+  background: var(--color-gray-light);
+  width: 100%;
+}
+
+.list {
+  @include mx.list-reset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.tag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tagName {
+  color: var(--color-black);
+  text-align: center;
+}
+
+.centeredHeading {
+  text-align: center;
+}

@@ -1,0 +1,19 @@
+$kind: http-request
+name: PUT /api/tags/:id
+description: Update a tag by id. `populate=*` shapes the updated entry in the response.
+url: "{{baseUrl}}/api/tags/{{tagId}}?populate=*"
+method: PUT
+headers:
+  Content-Type: application/json
+queryParams:
+  populate: "*"
+body:
+  type: text
+  content: |-
+    {
+      "data": {
+        "name": "Updated Tag",
+        "slug": "updated-tag"
+      }
+    }
+order: 4000
