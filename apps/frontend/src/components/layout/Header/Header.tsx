@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 
 import { MobileMenu, MOBILE_MENU_ID } from '../MobileMenu/MobileMenu';
 import styles from './Header.module.scss';
@@ -10,9 +10,6 @@ const NAV_LINKS = ['Restaurants', 'Chefs'];
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const closeMenu = useCallback(() => setMenuOpen(false), []);
-  const openMenu = useCallback(() => setMenuOpen(true), []);
 
   return (
     <>
@@ -24,7 +21,7 @@ export function Header() {
             aria-label="Open menu"
             aria-expanded={menuOpen}
             aria-controls={MOBILE_MENU_ID}
-            onClick={openMenu}
+            onClick={() => setMenuOpen(true)}
           >
             <Image
               src="/assets/icons/HAMBUR.svg"
@@ -80,7 +77,7 @@ export function Header() {
         </div>
       </header>
 
-      <MobileMenu open={menuOpen} onClose={closeMenu} />
+      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
     </>
   );
 }

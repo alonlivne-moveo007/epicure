@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect } from 'react';
 
 import styles from './MobileMenu.module.scss';
 
@@ -17,15 +16,6 @@ export type MobileMenuProps = {
 };
 
 export function MobileMenu({ open, onClose }: MobileMenuProps) {
-  useEffect(() => {
-    if (!open) return;
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    document.addEventListener('keydown', onKeyDown);
-    return () => document.removeEventListener('keydown', onKeyDown);
-  }, [open, onClose]);
-
   return (
     <div
       className={`${styles.overlay} ${open ? styles.overlayOpen : ''}`}
