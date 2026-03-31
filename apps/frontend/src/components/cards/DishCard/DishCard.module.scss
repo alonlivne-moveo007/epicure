@@ -6,6 +6,7 @@
 ───────────────────────────────────────────────────────────── */
 .cardDish {
   width: 245px;
+  height: 388px;
   overflow: hidden;
   background: var(--color-cream);
   display: flex;
@@ -16,6 +17,7 @@
     height: 654px;
   }
 }
+
 
 .thumb {
   position: relative;

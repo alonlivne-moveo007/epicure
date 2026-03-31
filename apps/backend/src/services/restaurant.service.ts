@@ -11,8 +11,17 @@ const POPULATE = { populate: '*' as const };
 export class RestaurantService {
   constructor(private readonly strapiHttp: StrapiHttpService) {}
 
-  async listRestaurants(): Promise<unknown> {
-    return this.strapiHttp.get<unknown>('/restaurants', POPULATE);
+  async listRestaurants(query: { page?: number; pageSize?: number }): Promise<unknown> {
+    const page = query?.page || 1;
+    const pageSize = query?.pageSize || 10;
+
+    return this.strapiHttp.get<unknown>('/restaurants', {
+      POPULATE,
+      pagination: {
+        page,
+        pageSize,
+      },
+    });
   }
 
   async listByChef(chefId: string): Promise<unknown> {

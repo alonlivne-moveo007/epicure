@@ -11,11 +11,38 @@ import { mapToRestaurants } from '@epicure/mappers';
 import type { StrapiRestaurantDto } from '@epicure/strapi-dto';
 
 import { getBffBaseUrl } from '@/lib/bff-url';
+import { PaginatedRestaurants } from '../model/restaurant.types';
 
+
+
+/**
+ * 
+ * @param body 
+ * @returns 
+ */
+function extractMeta(body: unknown): any {
+  if (!isRecord(body)) return null;
+  const inner = body['data'];
+  if (!isRecord(inner)) return null;
+  return inner['meta']?.pagination ?? null;
+}
+
+
+
+/**
+ * 
+ * @param v 
+ * @returns 
+ */
 function isRecord(v: unknown): v is Record<string, unknown> {
   return typeof v === 'object' && v !== null;
 }
 
+/**
+ * 
+ * @param body 
+ * @returns 
+ */
 function extractRestaurants(body: unknown): StrapiRestaurantDto[] {
   if (!isRecord(body)) return [];
   const inner = body['data'];
@@ -25,26 +52,33 @@ function extractRestaurants(body: unknown): StrapiRestaurantDto[] {
   return rows as StrapiRestaurantDto[];
 }
 
-export async function getRestaurantsByChef(chefId: number): Promise<Restaurant[]> {
+/**
+ * 
+ * @param page 
+ * @param pageSize 
+ * @returns 
+ */
+export async function getRestaurants(page = 1, pageSize = 9): Promise<PaginatedRestaurants> {
   const base = getBffBaseUrl().replace(/\/$/, '');
-  const res = await fetch(`${base}/api/restaurants?chefId=${chefId}`, {
+  
+  const url = `${base}/api/restaurants?page=${page}&pageSize=${pageSize}`;
+
+  const res = await fetch(url, {
     next: { revalidate: 60 },
   });
 
-  if (!res.ok) return [];
+  if (!res.ok) {
+    return { restaurants: [], pageCount: 0, total: 0 };
+  }
 
   const json = (await res.json()) as ApiResponse<unknown>;
-  return mapToRestaurants(extractRestaurants(json));
-}
+  
+  const meta = extractMeta(json);
+  const restaurantsDto = extractRestaurants(json);
 
-export async function getRestaurants(): Promise<Restaurant[]> {
-  const base = getBffBaseUrl().replace(/\/$/, '');
-  const res = await fetch(`${base}/api/restaurants`, {
-    next: { revalidate: 60 },
-  });
-
-  if (!res.ok) return [];
-
-  const json = (await res.json()) as ApiResponse<unknown>;
-  return mapToRestaurants(extractRestaurants(json));
+  return {
+    restaurants: mapToRestaurants(restaurantsDto),
+    pageCount: meta?.pageCount ?? 0,
+    total: meta?.total ?? 0,
+  };
 }

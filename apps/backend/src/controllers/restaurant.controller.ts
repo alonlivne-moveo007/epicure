@@ -20,10 +20,8 @@ export class RestaurantController {
   constructor(private readonly restaurantService: RestaurantService) {}
 
   @Get()
-  async list(@Query('chefId') chefId?: string): Promise<ApiResponse<unknown>> {
-    const data = chefId
-      ? await this.restaurantService.listByChef(chefId)
-      : await this.restaurantService.listRestaurants();
+  async list(@Query() query: { page?: number; pageSize?: number }): Promise<ApiResponse<unknown>> {
+    const data = await this.restaurantService.listRestaurants(query);
     return { data };
   }
 
