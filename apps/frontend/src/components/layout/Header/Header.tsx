@@ -9,11 +9,13 @@ export function Header() {
     <header className={styles.header}>
       {/* Mobile: hamburger (left) */}
       <button type="button" className={styles.hamburger} aria-label="Open menu">
-        <svg width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden="true">
-          <rect y="0" width="22" height="2" fill="currentColor" />
-          <rect y="7" width="22" height="2" fill="currentColor" />
-          <rect y="14" width="22" height="2" fill="currentColor" />
-        </svg>
+        <Image
+          src="assets/icons/HAMBUR.svg"
+          alt="Open menu"
+          width={24}
+          height={24}
+          aria-hidden="true"
+        />
       </button>
 
       {/* Mobile: logo (center) */}
