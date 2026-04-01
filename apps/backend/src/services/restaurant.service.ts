@@ -5,7 +5,6 @@
 import { Injectable } from '@nestjs/common';
 import { StrapiHttpService } from './strapi-http.service';
 
-const POPULATE = { populate: '*' as const };
 
 @Injectable()
 export class RestaurantService {
@@ -16,7 +15,7 @@ export class RestaurantService {
     const pageSize = query?.pageSize || 10;
 
     return this.strapiHttp.get<unknown>('/restaurants', {
-      POPULATE,
+      populate: '*',
       pagination: {
         page,
         pageSize,
@@ -24,23 +23,20 @@ export class RestaurantService {
     });
   }
 
-  async listByChef(chefId: string): Promise<unknown> {
-    return this.strapiHttp.get<unknown>('/restaurants', {
-      ...POPULATE,
-      filters: { chef: { id: { $eq: chefId } } },
-    });
-  }
+
+
+
 
   async getRestaurant(id: string): Promise<unknown> {
-    return this.strapiHttp.get<unknown>(`/restaurants/${id}`, POPULATE);
+    return this.strapiHttp.get<unknown>(`/restaurants/${id}`, { populate: '*' });
   }
 
   async createRestaurant(body: unknown): Promise<unknown> {
-    return this.strapiHttp.post<unknown>('/restaurants', body, POPULATE);
+    return this.strapiHttp.post<unknown>('/restaurants', body, { populate: '*' });
   }
 
   async updateRestaurant(id: string, body: unknown): Promise<unknown> {
-    return this.strapiHttp.put<unknown>(`/restaurants/${id}`, body, POPULATE);
+    return this.strapiHttp.put<unknown>(`/restaurants/${id}`, body, { populate: '*' });
   }
 
   async deleteRestaurant(id: string): Promise<unknown> {
