@@ -1,15 +1,26 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 import { MobileMenu, MOBILE_MENU_ID } from '../MobileMenu/MobileMenu';
 import styles from './Header.module.scss';
 
-const NAV_LINKS = ['Restaurants', 'Chefs'];
+const NAV_ITEMS = [
+  { label: 'Restaurants', href: '/restaurants' },
+  { label: 'Chefs', href: '/chefs' },
+] as const;
+
+function isNavActive(pathname: string, href: string) {
+  if (href === '/') return pathname === '/';
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <>
@@ -54,11 +65,19 @@ export function Header() {
         </span>
 
         <nav className={styles.nav} aria-label="Main navigation">
-          {NAV_LINKS.map((link) => (
-            <span key={link} className={`${styles.navLink} button-text`}>
-              {link}
-            </span>
-          ))}
+          {NAV_ITEMS.map(({ label, href }) => {
+            const active = isNavActive(pathname, href);
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={`${styles.navLink} button-text ${active ? styles.navLinkActive : ''}`}
+                aria-current={active ? 'page' : undefined}
+              >
+                {label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className={styles.icons}>

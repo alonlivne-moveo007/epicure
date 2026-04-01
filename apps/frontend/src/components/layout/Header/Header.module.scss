@@ -69,6 +69,18 @@
 
 .navLink {
   @include mx.interactive-link;
+  text-decoration: none;
+  padding: 0 0 4px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: inherit;
+  line-height: inherit;
+  background: none;
+}
+
+.navLinkActive {
+  font-weight: var(--font-weight-regular);
+  border-bottom-color: var(--color-gold);
 }
 
 // ─── Icon group (both breakpoints) ───────────────────────────────────────────

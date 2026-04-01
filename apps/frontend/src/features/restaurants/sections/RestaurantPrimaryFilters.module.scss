@@ -1,0 +1,50 @@
+@use '../../../app/styles/breakpoints' as bp;
+
+.nav {
+    margin-bottom: var(--spacing-sm);
+    width: 100%;
+
+    @media (min-width: bp.$lg) {
+        margin-bottom: 1.25rem;
+    }
+}
+
+.track {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem;
+    overflow: visible;
+    padding-bottom: 6px;
+
+    @media (min-width: bp.$lg) {
+        padding-bottom: 0;
+        gap: 2rem;
+    }
+}
+
+.item {
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0 0 4px;
+    cursor: pointer;
+    color: var(--color-gray);
+    font-family: inherit;
+    line-height: inherit;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+
+    @media (max-width: (bp.$lg - 1px)) {
+        font-size: 0.9rem;
+    }
+}
+
+.itemActive {
+    color: var(--color-black);
+    font-weight: var(--font-weight-regular);
+
+    @media (max-width: (bp.$lg - 1px)) {
+        border-bottom-color: var(--color-gold);
+    }
+}

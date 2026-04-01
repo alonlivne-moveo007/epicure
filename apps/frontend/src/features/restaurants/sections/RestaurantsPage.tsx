@@ -3,14 +3,19 @@
  */
 import { RestaurantCard } from '@/components/cards/RestaurantCard/RestaurantCard';
 import { SectionWrapper } from '@/components/layout/SectionWrapper/SectionWrapper';
-import { PaginatedRestaurants } from "../model/restaurant.types";
+import { RestaurantPrimaryFilters } from './RestaurantPrimaryFilters';
+
+import type { PaginatedRestaurants } from "../model/restaurant.types";
+
 import styles from './RestaurantsPage.module.scss';
+
 
 export function RestaurantsPage(props: { initialData: PaginatedRestaurants }) {
   const { initialData } = props;
   const { restaurants, total } = initialData;
   return (
-    <SectionWrapper titleId="restaurants-heading">
+    <SectionWrapper title={`Restaurants`} titleId="restaurants-heading">
+      <RestaurantPrimaryFilters />
       <ul className={styles.grid}>
         {restaurants.map((restaurant) => (
           <li key={restaurant.id} className={styles.cell}>

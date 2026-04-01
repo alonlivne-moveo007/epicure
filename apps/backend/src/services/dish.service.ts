@@ -5,26 +5,25 @@
 import { Injectable } from '@nestjs/common';
 import { StrapiHttpService } from './strapi-http.service';
 
-const POPULATE = { populate: '*' as const };
 
 @Injectable()
 export class DishService {
   constructor(private readonly strapiHttp: StrapiHttpService) {}
 
   async listDishes(): Promise<unknown> {
-    return this.strapiHttp.get<unknown>('/dishes', POPULATE);
+    return this.strapiHttp.get<unknown>('/dishes', { populate: '*' });
   }
 
   async getDish(id: string): Promise<unknown> {
-    return this.strapiHttp.get<unknown>(`/dishes/${id}`, POPULATE);
+    return this.strapiHttp.get<unknown>(`/dishes/${id}`, { populate: '*' });
   }
 
   async createDish(body: unknown): Promise<unknown> {
-    return this.strapiHttp.post<unknown>('/dishes', body, POPULATE);
+    return this.strapiHttp.post<unknown>('/dishes', body, { populate: '*' });
   }
 
   async updateDish(id: string, body: unknown): Promise<unknown> {
-    return this.strapiHttp.put<unknown>(`/dishes/${id}`, body, POPULATE);
+    return this.strapiHttp.put<unknown>(`/dishes/${id}`, body, { populate: '*' });
   }
 
   async deleteDish(id: string): Promise<unknown> {
