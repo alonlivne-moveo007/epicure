@@ -24,7 +24,7 @@ export function RestaurantPrimaryFilters() {
                         <button
                             key={f.id}
                             type="button"
-                            className={`${styles.item} button-text ${isActive ? styles.itemActive : ''}`}
+                            className={`${styles.item} ${f.id === 'map' ? styles.itemDesktopOnly : ''} button-text ${isActive ? styles.itemActive : ''}`}
                             aria-pressed={isActive}
                             onClick={() => setActive(f.id)}
                         >

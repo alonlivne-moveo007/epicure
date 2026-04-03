@@ -13,13 +13,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1.25rem;
+    gap: 2rem;
     overflow: visible;
     padding-bottom: 6px;
 
     @media (min-width: bp.$lg) {
         padding-bottom: 0;
-        gap: 2rem;
     }
 }
 
@@ -34,9 +33,11 @@
     background: none;
     border: none;
     border-bottom: 2px solid transparent;
+}
 
+.itemDesktopOnly {
     @media (max-width: (bp.$lg - 1px)) {
-        font-size: 0.9rem;
+        display: none;
     }
 }
 
