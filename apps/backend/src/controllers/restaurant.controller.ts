@@ -20,8 +20,14 @@ export class RestaurantController {
   constructor(private readonly restaurantService: RestaurantService) {}
 
   @Get()
-  async list(@Query() query: { page?: number; pageSize?: number }): Promise<ApiResponse<unknown>> {
-    const data = await this.restaurantService.listRestaurants(query);
+  async list(
+    @Query() query: { page?: string; pageSize?: string; filter?: string },
+  ): Promise<ApiResponse<unknown>> {
+    const data = await this.restaurantService.listRestaurants({
+      page: query.page !== undefined ? Number(query.page) : undefined,
+      pageSize: query.pageSize !== undefined ? Number(query.pageSize) : undefined,
+      filter: query.filter,
+    });
     return { data };
   }
 
@@ -31,14 +37,6 @@ export class RestaurantController {
     return { data };
   }
 
-
-
-
-
-
-
-
-  
   @Post()
   async create(@Body() body: unknown): Promise<ApiResponse<unknown>> {
     const data = await this.restaurantService.createRestaurant(body);

@@ -1,11 +1,19 @@
 /**
- * Root restaurants route (`/restaurants`): loads restaurants content from the Nest BFF in a Server Component and
- * renders restaurants page. Data fetching stays on the server (`get-restaurants.ts`).
+ * Root restaurants route (`/restaurants`): loads restaurants from the Nest BFF (Server Component).
  */
+import { parseRestaurantsListFilterParam } from '@epicure/backend-types';
 import { getRestaurants } from '@/features/restaurants/api/get-restaurants';
 import RestaurantsPage from '@/features/restaurants/sections/RestaurantsPage';
 
-export default async function Restaurants() {
-  const paginatedData = await getRestaurants();
-  return <RestaurantsPage initialData={paginatedData} />;
+type PageProps = {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+};
+
+export default async function Restaurants({ searchParams }: PageProps) {
+  const sp = (await searchParams) ?? {};
+  const filter = parseRestaurantsListFilterParam(sp.filter);
+
+  const paginatedData = await getRestaurants({ page: 1, pageSize: 9, filter });
+
+  return <RestaurantsPage initialData={paginatedData} activeFilter={filter} />;
 }

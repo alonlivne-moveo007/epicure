@@ -483,8 +483,8 @@ export interface ApiDishDish extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String & Schema.Attribute.Required;
     price: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     publishedAt: Schema.Attribute.DateTime;
-    restaurant: Schema.Attribute.Relation<
-      'manyToOne',
+    restaurants: Schema.Attribute.Relation<
+      'manyToMany',
       'api::restaurant.restaurant'
     >;
     tags: Schema.Attribute.Relation<'manyToMany', 'api::tag.tag'>;
@@ -547,7 +547,7 @@ export interface ApiRestaurantRestaurant extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
-    dishes: Schema.Attribute.Relation<'oneToMany', 'api::dish.dish'>;
+    dishes: Schema.Attribute.Relation<'manyToMany', 'api::dish.dish'>;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<

@@ -1,48 +1,44 @@
 /**
  * Server-only fetch for restaurants from the Nest BFF.
- * Supports an optional chefId filter — maps to `GET /api/restaurants?chefId=<id>`.
+ * Request: `GET {bffBaseUrl}/api/restaurants` with optional `page`, `pageSize`, `filter`.
  */
 
 import 'server-only';
 
-import type { ApiResponse } from '@epicure/backend-types';
-import type { Restaurant } from '@epicure/domain';
+import type { ApiResponse, RestaurantsListFilter } from '@epicure/backend-types';
 import { mapToRestaurants } from '@epicure/mappers';
 import type { StrapiRestaurantDto } from '@epicure/strapi-dto';
 
 import { getBffBaseUrl } from '@/lib/bff-url';
 import { PaginatedRestaurants } from '../model/restaurant.types';
 
+export type { RestaurantsListFilter } from '@epicure/backend-types';
 
+type StrapiPaginationSlice = {
+  pageCount?: number;
+  total?: number;
+} | null;
 
-/**
- * 
- * @param body 
- * @returns 
- */
-function extractMeta(body: unknown): any {
-  if (!isRecord(body)) return null;
-  const inner = body['data'];
-  if (!isRecord(inner)) return null;
-  return inner['meta']?.pagination ?? null;
-}
-
-
-
-/**
- * 
- * @param v 
- * @returns 
- */
 function isRecord(v: unknown): v is Record<string, unknown> {
   return typeof v === 'object' && v !== null;
 }
 
-/**
- * 
- * @param body 
- * @returns 
- */
+function extractMeta(body: unknown): StrapiPaginationSlice {
+  if (!isRecord(body)) return null;
+  const inner = body['data'];
+  if (!isRecord(inner)) return null;
+  const meta = inner['meta'];
+  if (!isRecord(meta)) return null;
+  const pagination = meta['pagination'];
+  if (!isRecord(pagination)) return null;
+  const pageCount = pagination['pageCount'];
+  const total = pagination['total'];
+  return {
+    pageCount: typeof pageCount === 'number' ? pageCount : undefined,
+    total: typeof total === 'number' ? total : undefined,
+  };
+}
+
 function extractRestaurants(body: unknown): StrapiRestaurantDto[] {
   if (!isRecord(body)) return [];
   const inner = body['data'];
@@ -52,16 +48,28 @@ function extractRestaurants(body: unknown): StrapiRestaurantDto[] {
   return rows as StrapiRestaurantDto[];
 }
 
-/**
- * 
- * @param page 
- * @param pageSize 
- * @returns 
- */
-export async function getRestaurants(page = 1, pageSize = 9): Promise<PaginatedRestaurants> {
+export type GetRestaurantsOptions = {
+  page?: number;
+  pageSize?: number;
+  /** Omit or `all` = no filter query param */
+  filter?: RestaurantsListFilter;
+};
+
+export async function getRestaurants(options: GetRestaurantsOptions = {}): Promise<PaginatedRestaurants> {
+  const page = options.page ?? 1;
+  const pageSize = options.pageSize ?? 9;
+  const filter = options.filter;
+
   const base = getBffBaseUrl().replace(/\/$/, '');
-  
-  const url = `${base}/api/restaurants?page=${page}&pageSize=${pageSize}`;
+  const params = new URLSearchParams({
+    page: String(page),
+    pageSize: String(pageSize),
+  });
+  if (filter && filter !== 'all') {
+    params.set('filter', filter);
+  }
+
+  const url = `${base}/api/restaurants?${params.toString()}`;
 
   const res = await fetch(url, {
     next: { revalidate: 60 },
@@ -72,7 +80,7 @@ export async function getRestaurants(page = 1, pageSize = 9): Promise<PaginatedR
   }
 
   const json = (await res.json()) as ApiResponse<unknown>;
-  
+
   const meta = extractMeta(json);
   const restaurantsDto = extractRestaurants(json);
 

@@ -38,9 +38,9 @@
       "target": "api::tag.tag",
       "inversedBy": "dishes"
     },
-    "restaurant": {
+    "restaurants": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::restaurant.restaurant",
       "inversedBy": "dishes"
     }
